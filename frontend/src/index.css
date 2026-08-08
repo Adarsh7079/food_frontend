@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap");
+@import "tailwindcss";
+
+a.active hr {
+  display: block;
+}
+
+:root {
+  color-scheme: light;
+  --brand-orange: #fb6d1b;
+  --brand-red: #ef4444;
+  --brand-dark: #1f2937;
+  --brand-soft: #fff4e8;
+  --brand-peach: #ffedde;
+  --brand-mustard: #f5a623;
+  --brand-coral: #ff8a5b;
+  --brand-teal: #0f766e;
+  --brand-gray-soft: #64748b;
+}
+
+* {
+  font-family: Outfit;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, rgba(251,109,27,0.12), transparent 20%), radial-gradient(circle at bottom right, rgba(251,183,101,0.14), transparent 18%), linear-gradient(180deg, #fff7f0 0%, #fff2e8 45%, #fff9f2 100%);
+  background-attachment: fixed;
+  color: var(--brand-dark);
+}
+
+img {
+  display: block;
+}
+
+.prata-regular {
+  font-family: "Prata", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  a.active {
+    background-color: var(--brand-orange);
+    color: white;
+    border-radius: 9999px;
+    padding: 0.35rem 0.7rem;
+  }
+}
+
+/* Improve select appearance */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--brand-dark) 50%), linear-gradient(135deg, var(--brand-dark) 50%, transparent 50%);
+  background-position: calc(100% - 1.25rem) calc(1em + 2px), calc(100% - 0.9rem) calc(1em + 2px);
+  background-size: 0.45em 0.45em, 0.45em 0.45em;
+  background-repeat: no-repeat;
+  padding-right: 2.5rem;
+}
+
+/* Ensure sliding panel appears above other content */
+.sliding-panel {
+  z-index: 50;
+}
