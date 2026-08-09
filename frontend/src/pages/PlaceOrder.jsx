@@ -59,7 +59,7 @@ const PlaceOrder = () => {
       );
     });
 
-  const sendOrderToWhatsApp = (orderItems, total, location) => {
+  const openOrderConfirmationInWhatsApp = (orderItems, total, location) => {
     const itemLines = orderItems
       .map((item) => `• ${item.name} × ${item.quantity} — ₹${item.price * item.quantity}`)
       .join("\n");
@@ -79,9 +79,9 @@ const PlaceOrder = () => {
     ].join("\n");
     const encodedMessage = encodeURIComponent(message);
 
-    ["917979429676", "919709628329"].forEach((number) => {
-      window.open(`https://wa.me/${number}?text=${encodedMessage}`, "_blank", "noopener,noreferrer");
-    });
+    window.location.assign(
+      `https://wa.me/919709628329?text=${encodedMessage}`
+    );
   };
 
   const onSubmitHandler = async (event) => {
@@ -123,10 +123,8 @@ const PlaceOrder = () => {
       // Guest orders are sent directly to the delivery team on WhatsApp.
       // Signed-in customers are also saved to their account order history.
       if (!token) {
-        sendOrderToWhatsApp(orderItems, total, location);
-        toast.success("Your COD order details are ready in WhatsApp.");
         setCartItems({});
-        navigate("/");
+        openOrderConfirmationInWhatsApp(orderItems, total, location);
         return;
       }
 
@@ -136,10 +134,8 @@ const PlaceOrder = () => {
         { headers: { token } }
       );
       if (response.data.success) {
-        sendOrderToWhatsApp(orderItems, total, location);
-        toast.success("Order placed successfully with Cash on Delivery.");
         setCartItems({});
-        navigate("/orders");
+        openOrderConfirmationInWhatsApp(orderItems, total, location);
       } else {
         toast.error(response.data.message || "Failed to place COD order.");
       }
