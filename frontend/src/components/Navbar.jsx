@@ -277,7 +277,23 @@ const Navbar = () => {
 
           {/* BACK BUTTON */}
 
-          <div className="flex items-center gap-4 p-4 border-b">
+          <div className="flex items-center justify-between gap-4 p-4 border-b">
+
+            <Link
+              to="/"
+              onClick={() => setVisible(false)}
+              className="flex items-center gap-2"
+              aria-label="Khana Khazana home"
+            >
+              <img
+                src="/logo.png"
+                alt="Khana Khazana"
+                className="h-10 w-10 rounded-full object-cover"
+              />
+              <span className="font-serif text-lg font-bold text-orange-600">
+                Khana Khazana
+              </span>
+            </Link>
 
             <button
               onClick={() =>
