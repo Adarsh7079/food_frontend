@@ -23,6 +23,12 @@ const About = () => {
       gender: "female",
       bio: "Crafting signature recipes, perfecting spice blends, and ensuring every dish meets top culinary standards.",
     },
+        {
+      name: "Chef Misti",
+      role: "Chef + Marketing Head",
+      gender: "female",
+      bio: "Crafting signature recipes, perfecting spice blends, and ensuring every dish meets top culinary standards.",
+    },
   
   ];
 

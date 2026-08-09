@@ -59,12 +59,19 @@ const Navbar = () => {
               LOGO
           ================================================== */}
 
-          <Link to="/">
+          <Link
+            to="/"
+            className="flex items-center gap-2"
+            aria-label="Khana Khazana home"
+          >
             <img
-              src={assets.logo}
-              className="w-36 sm:w-44"
-              alt="Logo"
+              src="/logo.png"
+              alt="Khana Khazana"
+              className="h-11 w-11 rounded-full object-cover sm:h-14 sm:w-14"
             />
+            <span className="hidden font-serif text-xl font-bold tracking-tight text-orange-600 sm:inline sm:text-2xl">
+              Khana Khazana
+            </span>
           </Link>
 
           {/* =================================================

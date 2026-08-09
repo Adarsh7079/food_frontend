@@ -3,14 +3,19 @@ import { ShopContext } from "../context/ShopContextContext";
 import { Link } from "react-router-dom";
 
 const ProductItem = ({ id, image, name, price, description }) => {
-  const { currency } = useContext(ShopContext);
+  const { currency, addToCart } = useContext(ShopContext);
   const [imgError, setImgError] = useState(false);
 
   const mainSrc = Array.isArray(image) ? image[0] : image;
 
+  const handleAddToCart = async () => {
+    await addToCart(id, "default");
+  };
+
   return (
-    <Link className="group block text-gray-700 cursor-pointer" to={`/product/${id}`}>
+    <div className="group block text-gray-700">
       <div className="overflow-hidden rounded-[2rem] bg-white shadow-[0_20px_60px_-35px_rgba(251,109,27,0.35)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_80px_-35px_rgba(251,109,27,0.45)]">
+        <Link to={`/product/${id}`} className="block cursor-pointer">
         <div className="relative overflow-hidden rounded-t-[2rem] bg-orange-50">
           {mainSrc && !imgError ? (
             <img
@@ -38,23 +43,28 @@ const ProductItem = ({ id, image, name, price, description }) => {
             Popular
           </span>
         </div>
+        </Link>
         <div className="space-y-3 p-5">
-          <div>
+          <Link to={`/product/${id}`} className="block">
             <p className="text-lg font-semibold text-gray-900">{name}</p>
             <p className="mt-2 text-sm text-gray-500 h-14 overflow-hidden">{description}</p>
-          </div>
+          </Link>
           <div className="flex items-center justify-between gap-3">
             <span className="rounded-full bg-gradient-to-r from-[#ffb56b] to-[#fb6d1b] px-4 py-2 text-sm font-semibold text-white shadow-md shadow-orange-200">
               {currency}
               {price}
             </span>
-            <button className="rounded-full bg-orange-100 px-5 py-2 text-sm font-semibold text-orange-700 transition hover:bg-orange-200">
-              Order Now
+            <button
+              type="button"
+              onClick={handleAddToCart}
+              className="rounded-full bg-orange-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-orange-700"
+            >
+              Add to cart
             </button>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

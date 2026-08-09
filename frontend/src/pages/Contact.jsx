@@ -39,8 +39,8 @@ const Contact = () => {
 
     try {
       await emailjs.send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+        "service_4p00v93",
+        "template_wtul4vg",
         {
           name: formData.name,
           email: formData.email,
@@ -48,7 +48,7 @@ const Contact = () => {
           message: formData.message,
         },
         {
-          publicKey: "YOUR_PUBLIC_KEY",
+          publicKey: "oGiPupD0J8VKfoVl8",
         }
       );
 

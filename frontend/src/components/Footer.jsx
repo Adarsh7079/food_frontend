@@ -1,5 +1,3 @@
-import { assets } from "../assets/assets";
-
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -13,7 +11,11 @@ const Footer = () => {
     <div className="f">
       <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm ">
         <div className="">
-          <img src={assets.logo} alt="" className="mb-5 w-32 " />
+          <img
+            src="/logo.png"
+            alt="Khana Khazana"
+            className="mb-5 h-16 w-16 rounded-full object-cover"
+          />
           <p className="w-full sm:w-2/3 text-gray-600">
             Fresh, flavourful meals made for busy days and late-night cravings.
             We bring comfort food, healthy bowls, and quick favorites straight to your door.
@@ -43,14 +45,14 @@ const Footer = () => {
           <p className="text-xl font-medium mb-5">GET IN TOUCH</p>
           <ul className="flex flex-col flex-1 text-gray-600">
             <li className="mb-2">+123 456 7890</li>
-            <li className="mb-2">hello@foodiehub.com</li>
+            <li className="mb-2">hello@khanakhazana.com</li>
           </ul>
         </div>
       </div>
       <div>
         <hr />
         <p className="py-5 text-sm text-center">
-          Copyright 2026 © FoodieHub - All Rights Reserved
+          Copyright 2026 © Khana Khazana - All Rights Reserved
         </p>
       </div>
     </div>

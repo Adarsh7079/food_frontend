@@ -1,6 +1,7 @@
 import React from "react";
 import Hero from "./Hero";
 import Categories from "./Categories";
+import LatestCollection from "../components/LatestCollection";
 import TiffinService from "../components/TiffinServices";
 import HygieneBanner from "../components/HygieneBanner";
 import HowItWorks from "../components/HowItWorks";
@@ -25,7 +26,7 @@ const Home = () => {
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
         <span>
-          <strong className="font-bold text-amber-900">Forever is Live!</strong> Enjoy dinner specials & authentic home-style meals delivered piping hot.
+          <strong className="font-bold text-amber-900">Khana Khazana is Live!</strong> Enjoy dinner specials & authentic home-style meals delivered piping hot.
         </span>
       </div>
 
@@ -45,6 +46,11 @@ const Home = () => {
             <Categories />
           </section>
 
+          {/* Menu Preview */}
+          <section>
+            <LatestCollection />
+          </section>
+
           {/* Tiffin / Subscription Services */}
           <section>
             <TiffinService />
@@ -56,9 +62,9 @@ const Home = () => {
           </section>
 
           {/* How Ordering Works */}
-          <section>
+          {/* <section>
             <HowItWorks />
-          </section>
+          </section> */}
 
           {/* Value Pillars (Fast Delivery, Good Quality, Good Quantity) */}
           <section>
