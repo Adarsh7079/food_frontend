@@ -77,10 +77,10 @@ const Contact = () => {
   // WHATSAPP
   // =====================================================
 
-  const whatsappNumber = "917079429676";
+  const whatsappNumber = "919709628329";
 
   const whatsappMessage = encodeURIComponent(
-    "Hello FoodieHub! 👋\n\nI want to place an order. Please help me with the available food items and ordering process."
+    "Hello Khana Khazana! 👋\n\nI want to place an order. Please help me with the available food items and ordering process."
   );
 
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
