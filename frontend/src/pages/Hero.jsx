@@ -57,7 +57,7 @@ const Hero = () => {
               Order Now
             </a>
             <a
-              href="/contact"
+              href="/menu"
               className="inline-flex items-center justify-center rounded-2xl border border-amber-300/80 bg-amber-100/40 hover:bg-amber-100/70 backdrop-blur-md px-8 py-3.5 text-sm font-bold text-amber-900 transition-all duration-200"
             >
               View Menu
