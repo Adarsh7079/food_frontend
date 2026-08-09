@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import Title from "../components/Title";
 import CartTotal from "../components/CartTotal";
-import { assets } from "../assets/assets";
 import { ShopContext } from "../context/ShopContextContext";
 import { defaultIndianFoodItems } from "../data/defaultIndianFoodItems";
 
@@ -9,8 +8,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const PlaceOrder = () => {
-  const [method, setMethod] = useState("cod");
-  const [paymentCategory, setPaymentCategory] = useState("cod");
+  const [shareLocation, setShareLocation] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     navigate,
     backendUrl,
@@ -40,44 +39,53 @@ const PlaceOrder = () => {
     setFormData((data) => ({ ...data, [name]: value }));
   };
 
-  const initPay = (order) => {
-    const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
-      amount: order.amount,
-      currency: order.currency,
-      name: "Order payment",
-      description: "Order Payment",
-      order_id: order.id,
-      receipt: order.receipt,
-      handler: async (response) => {
-        console.log(response);
-        try {
-          const { data } = await axios.post(
-            backendUrl + "/api/order/verifyRazorpay",
-            response,
-            { headers: { token } }
-          );
-          if (data.success) {
-            navigate("/orders");
-            setCartItems({});
-          }
-        } catch (error) {
-          console.log(error);
-          toast.error(error);
-        }
-      },
-    };
-    const rzp = new window.Razorpay(options);
-    rzp.open();
+  const getLocationDetails = () =>
+    new Promise((resolve) => {
+      if (!shareLocation || !navigator.geolocation) {
+        resolve("Location not shared");
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        ({ coords }) =>
+          resolve(
+            `https://www.google.com/maps?q=${coords.latitude},${coords.longitude}`
+          ),
+        () => {
+          toast.info("Location was not shared. The delivery address will be used instead.");
+          resolve("Location not shared")
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+      );
+    });
+
+  const sendOrderToWhatsApp = (orderItems, total, location) => {
+    const itemLines = orderItems
+      .map((item) => `• ${item.name} × ${item.quantity} — ₹${item.price * item.quantity}`)
+      .join("\n");
+    const message = [
+      "*New Khana Khazana COD Order*",
+      `Customer: ${formData.firstName} ${formData.lastName}`,
+      `Phone: ${formData.phone}`,
+      `Email: ${formData.email}`,
+      `Address: ${formData.street}, ${formData.city}, ${formData.state}, ${formData.zipcode}, ${formData.country}`,
+      `Location: ${location}`,
+      "",
+      "*Items*",
+      itemLines,
+      "",
+      `Payment: Cash on Delivery`,
+      `Total: ₹${total}`,
+    ].join("\n");
+    const encodedMessage = encodeURIComponent(message);
+
+    ["917979429676", "919709628329"].forEach((number) => {
+      window.open(`https://wa.me/${number}?text=${encodedMessage}`, "_blank", "noopener,noreferrer");
+    });
   };
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-    if (!token) {
-      toast.error("Please login to place your order.");
-      navigate("/login");
-      return;
-    }
 
     let orderItems = [];
     for (const items in cartItems) {
@@ -101,70 +109,45 @@ const PlaceOrder = () => {
       return;
     }
 
+    const location = await getLocationDetails();
+    const total = getCartAmount() + delivery_fee;
     let orderData = {
       address: `${formData.firstName} ${formData.lastName}, ${formData.street}, ${formData.city}, ${formData.state}, ${formData.zipcode}, ${formData.country}, Phone: ${formData.phone}, Email: ${formData.email}`,
       items: orderItems,
-      amount: getCartAmount() + delivery_fee,
-      paymentMethod: method === "cod" ? "COD" : method === "stripe" ? "Stripe" : "Razorpay",
+      amount: total,
+      paymentMethod: "COD",
     };
 
-    const headers = { headers: { token } };
-
     try {
-      switch (method) {
-        case "cod": {
-          const response = await axios.post(
-            backendUrl + "/api/order/place",
-            orderData,
-            headers
-          );
-          if (response.data.success) {
-            toast.success("Order placed successfully with Cash on Delivery.");
-            setCartItems({});
-            navigate("/orders");
-          } else {
-            toast.error(response.data.message || "Failed to place COD order.");
-          }
-          break;
-        }
+      setIsSubmitting(true);
+      // Guest orders are sent directly to the delivery team on WhatsApp.
+      // Signed-in customers are also saved to their account order history.
+      if (!token) {
+        sendOrderToWhatsApp(orderItems, total, location);
+        toast.success("Your COD order details are ready in WhatsApp.");
+        setCartItems({});
+        navigate("/");
+        return;
+      }
 
-        case "stripe": {
-          const responseStripe = await axios.post(
-            backendUrl + "/api/order/stripe",
-            orderData,
-            headers
-          );
-          if (responseStripe.data.success) {
-            const { session_url } = responseStripe.data;
-            window.location.replace(session_url);
-          } else {
-            toast.error(responseStripe.data.message || "Stripe payment failed.");
-          }
-          break;
-        }
-
-        case "razorpay": {
-          const responseRazorpay = await axios.post(
-            backendUrl + "/api/order/razorpay",
-            orderData,
-            headers
-          );
-          if (responseRazorpay.data.success) {
-            initPay(responseRazorpay.data.order);
-          } else {
-            toast.error(responseRazorpay.data.message || "Razorpay payment failed.");
-          }
-          break;
-        }
-
-        default: {
-          toast.error("Invalid payment method selected");
-          break;
-        }
+      const response = await axios.post(
+        backendUrl + "/api/order/place",
+        orderData,
+        { headers: { token } }
+      );
+      if (response.data.success) {
+        sendOrderToWhatsApp(orderItems, total, location);
+        toast.success("Order placed successfully with Cash on Delivery.");
+        setCartItems({});
+        navigate("/orders");
+      } else {
+        toast.error(response.data.message || "Failed to place COD order.");
       }
     } catch (error) {
       console.log(error);
       toast.error(error.message || "Unable to complete the order.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -265,6 +248,17 @@ const PlaceOrder = () => {
           type="number"
           placeholder="Phone"
         />
+        <label className="mt-2 flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-stone-700">
+          <input
+            type="checkbox"
+            checked={shareLocation}
+            onChange={(event) => setShareLocation(event.target.checked)}
+            className="mt-1 h-4 w-4 accent-orange-600"
+          />
+          <span>
+            Share my current location with the delivery team. We will request your browser location only when you place this order.
+          </span>
+        </label>
       </div>
       {/* Righr Side  */}
 
@@ -274,18 +268,8 @@ const PlaceOrder = () => {
         </div>
         <div className="mt-12">
           <Title text1={"PAYMENT"} text2={"METHOD"} />
-          <div className="grid gap-3 sm:grid-cols-2 mt-4">
-            <div
-              onClick={() => {
-                setPaymentCategory("cod");
-                setMethod("cod");
-              }}
-              className={`cursor-pointer rounded-xl border p-4 transition-shadow duration-200 ${
-                paymentCategory === "cod"
-                  ? "border-green-500 bg-green-50 shadow-sm"
-                  : "border-gray-300 bg-white hover:shadow-lg"
-              }`}
-            >
+          <div className="mt-4">
+            <div className="rounded-xl border border-green-500 bg-green-50 p-4 shadow-sm">
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-sm font-semibold text-gray-900">
@@ -295,89 +279,18 @@ const PlaceOrder = () => {
                     Pay in cash when your order is delivered.
                   </p>
                 </div>
-                <div className={`h-5 w-5 rounded-full border ${
-                  paymentCategory === "cod"
-                    ? "border-green-500 bg-green-500"
-                    : "border-gray-400 bg-white"
-                }`}></div>
-              </div>
-            </div>
-            <div
-              onClick={() => {
-                setPaymentCategory("online");
-                if (method === "cod") setMethod("stripe");
-              }}
-              className={`cursor-pointer rounded-xl border p-4 transition-shadow duration-200 ${
-                paymentCategory === "online"
-                  ? "border-green-500 bg-green-50 shadow-sm"
-                  : "border-gray-300 bg-white hover:shadow-lg"
-              }`}
-            >
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-sm font-semibold text-gray-900">
-                    Online Payment
-                  </p>
-                  <p className="mt-2 text-xs text-gray-500">
-                    Pay securely using Stripe or Razorpay.
-                  </p>
-                </div>
-                <div className={`h-5 w-5 rounded-full border ${
-                  paymentCategory === "online"
-                    ? "border-green-500 bg-green-500"
-                    : "border-gray-400 bg-white"
-                }`}></div>
+                <div className="h-5 w-5 rounded-full border border-green-500 bg-green-500"></div>
               </div>
             </div>
           </div>
 
-          {paymentCategory === "online" ? (
-            <div className="grid gap-3 sm:grid-cols-2 mt-4">
-              <div
-                onClick={() => setMethod("stripe")}
-                className={`cursor-pointer rounded-xl border p-4 flex items-center gap-3 transition-shadow duration-200 ${
-                  method === "stripe"
-                    ? "border-green-500 bg-white shadow-sm"
-                    : "border-gray-300 bg-white hover:shadow-lg"
-                }`}
-              >
-                <div className="h-9 w-9 rounded-full bg-slate-100 flex items-center justify-center">
-                  <img className="h-5" src={assets.stripe_logo} alt="Stripe" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-gray-900">
-                    Stripe
-                  </p>
-                  <p className="text-xs text-gray-500">Pay with card or UPI.</p>
-                </div>
-              </div>
-              <div
-                onClick={() => setMethod("razorpay")}
-                className={`cursor-pointer rounded-xl border p-4 flex items-center gap-3 transition-shadow duration-200 ${
-                  method === "razorpay"
-                    ? "border-green-500 bg-white shadow-sm"
-                    : "border-gray-300 bg-white hover:shadow-lg"
-                }`}
-              >
-                <div className="h-9 w-9 rounded-full bg-slate-100 flex items-center justify-center">
-                  <img className="h-5" src={assets.razorpay_logo} alt="Razorpay" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-gray-900">
-                    Razorpay
-                  </p>
-                  <p className="text-xs text-gray-500">Pay with UPI, cards, or wallet.</p>
-                </div>
-              </div>
-            </div>
-          ) : null}
-
           <div className="w-full text-end mt-8">
             <button
               type="submit"
+              disabled={isSubmitting}
               className="bg-black text-white px-16 py-3 text-sm rounded-full"
             >
-              PLACE ORDER
+              {isSubmitting ? "PLACING ORDER..." : "PLACE COD ORDER"}
             </button>
           </div>
         </div>
