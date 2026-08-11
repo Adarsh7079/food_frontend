@@ -25,10 +25,7 @@ const PlaceOrder = () => {
     lastName: "",
     email: "",
     street: "",
-    city: "",
-    state: "",
-    zipcode: "",
-    country: "",
+    city: "Gurugram",
     phone: "",
   });
 
@@ -68,7 +65,7 @@ const PlaceOrder = () => {
       `Customer: ${formData.firstName} ${formData.lastName}`,
       `Phone: ${formData.phone}`,
       `Email: ${formData.email}`,
-      `Address: ${formData.street}, ${formData.city}, ${formData.state}, ${formData.zipcode}, ${formData.country}`,
+      `Address: ${formData.street}, ${formData.city}`,
       `Location: ${location}`,
       "",
       "*Items*",
@@ -109,10 +106,22 @@ const PlaceOrder = () => {
       return;
     }
 
+    const cityValue = formData.city.trim().toLowerCase();
+    if (
+      !cityValue.includes("gurugram") &&
+      !cityValue.includes("gurgaon") &&
+      !cityValue.includes("gurugam")
+    ) {
+      toast.error(
+        "We deliver only within Gurugram (Gurgaon). Please enter Gurugram as your city."
+      );
+      return;
+    }
+
     const location = await getLocationDetails();
     const total = getCartAmount() + delivery_fee;
     let orderData = {
-      address: `${formData.firstName} ${formData.lastName}, ${formData.street}, ${formData.city}, ${formData.state}, ${formData.zipcode}, ${formData.country}, Phone: ${formData.phone}, Email: ${formData.email}`,
+      address: `${formData.firstName} ${formData.lastName}, ${formData.street}, ${formData.city}, Phone: ${formData.phone}, Email: ${formData.email}`,
       items: orderItems,
       amount: total,
       paymentMethod: "COD",
@@ -157,6 +166,14 @@ const PlaceOrder = () => {
         <div className="text-xl sm:text-2xl my-3">
           <Title text1={"DELIVERY"} text2={"INFORMATION"} />
         </div>
+
+        <div className="rounded-3xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950 shadow-sm">
+          <p className="font-semibold">Delivery area notice</p>
+          <p className="mt-1 text-xs leading-relaxed text-stone-700">
+            We currently accept orders only from Gurugram (Gurgaon). Please keep the city as Gurugram so we can serve you quickly.
+          </p>
+        </div>
+
         <div className="flex gap-3">
           <input
             required
@@ -196,44 +213,15 @@ const PlaceOrder = () => {
           placeholder="Street"
         />
         <div className="flex gap-3">
-          <input
+          <select
             required
-            onChange={onChangeHandler}
             name="city"
             value={formData.city}
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
-            type="text"
-            placeholder="City"
-          />
-          <input
-            required
             onChange={onChangeHandler}
-            name="state"
-            value={formData.state}
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
-            type="text"
-            placeholder="State"
-          />
-        </div>
-        <div className="flex gap-3">
-          <input
-            required
-            onChange={onChangeHandler}
-            name="zipcode"
-            value={formData.zipcode}
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
-            type="number"
-            placeholder="Zipcode"
-          />
-          <input
-            required
-            onChange={onChangeHandler}
-            name="country"
-            value={formData.country}
-            className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
-            type="text"
-            placeholder="Country"
-          />
+            className="border border-gray-300 rounded py-1.5 px-3.5 w-full bg-white text-stone-900"
+          >
+            <option value="Gurugram">Gurugram</option>
+          </select>
         </div>
         <input
           required
