@@ -154,7 +154,7 @@ const Contact = () => {
             {/* CALL */}
 
             <a
-              href="tel:+917079429676"
+              href="tel:+919709628329"
               className="inline-flex items-center justify-center gap-2 bg-white hover:bg-orange-50 text-orange-600 font-bold text-sm px-5 py-3 rounded-xl shadow-md active:scale-95 transition-all"
             >
               <span className="text-lg">
@@ -240,10 +240,10 @@ const Contact = () => {
                 </span>
 
                 <a
-                  href="tel:+917079429676"
+                  href="tel:+919709628329"
                   className="text-gray-600 hover:text-orange-600 transition-colors"
                 >
-                  +91 7079429676
+                  +91 97096 28329
                 </a>
 
               </p>
@@ -257,10 +257,10 @@ const Contact = () => {
                 </span>
 
                 <a
-                  href="mailto:adarshk8271@gmail.com"
+                  href="mailto:araag.khana.khazana@gmail.com"
                   className="text-gray-600 hover:text-orange-600 transition-colors"
                 >
-                  adarshk8271@gmail.com
+                  araag.khana.khazana@gmail.com
                 </a>
 
               </p>

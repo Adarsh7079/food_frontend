@@ -1,41 +1,41 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
-
-const chunk = (arr, size) => {
-  const res = [];
-  for (let i = 0; i < arr.length; i += size) res.push(arr.slice(i, i + size));
-  return res;
-};
 
 const MultiCardCarousel = ({ items = [], interval = 3500 }) => {
   const [visible, setVisible] = useState(3);
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-  const containerRef = useRef(null);
 
   useEffect(() => {
     const calc = () => {
       const w = window.innerWidth;
-      if (w >= 1024) setVisible(4);
+      if (w >= 1024) setVisible(3);
       else if (w >= 640) setVisible(3);
-      else setVisible(2);
+      else setVisible(1);
     };
     calc();
     window.addEventListener("resize", calc);
     return () => window.removeEventListener("resize", calc);
   }, []);
 
-  const slides = chunk(items, visible || 1);
-  const max = slides.length;
+  const itemWidth = 100 / visible;
+  const maxIndex = Math.max(items.length - visible, 0);
 
   useEffect(() => {
-    if (paused || max <= 1) return;
-    const t = setInterval(() => setIndex((i) => (i + 1) % max), interval);
-    return () => clearInterval(t);
-  }, [paused, interval, max]);
+    if (index > maxIndex) setIndex(0);
+  }, [index, maxIndex]);
 
-  const prev = () => setIndex((i) => (i - 1 + max) % max);
-  const next = () => setIndex((i) => (i + 1) % max);
+  useEffect(() => {
+    if (paused || maxIndex === 0) return;
+    const t = setInterval(
+      () => setIndex((i) => (i >= maxIndex ? 0 : i + 1)),
+      interval
+    );
+    return () => clearInterval(t);
+  }, [paused, interval, maxIndex]);
+
+  const prev = () => setIndex((i) => (i <= 0 ? maxIndex : i - 1));
+  const next = () => setIndex((i) => (i >= maxIndex ? 0 : i + 1));
 
   return (
     <div
@@ -45,26 +45,30 @@ const MultiCardCarousel = ({ items = [], interval = 3500 }) => {
     >
       <div className="overflow-hidden">
         <div
-          ref={containerRef}
           className="flex transition-transform duration-500"
-          style={{ transform: `translateX(-${index * 100}%)`, width: `${max * 100}%` }}
+          style={{ transform: `translateX(-${index * itemWidth}%)` }}
         >
-          {slides.map((group, sIdx) => (
-            <div key={sIdx} className="w-full flex-shrink-0 px-2">
-              <div className="flex gap-4 justify-center">
-                {group.map((item) => (
-                  <div key={item._id || item.id} className="w-1/2 sm:w-1/3 lg:w-1/4">
-                    <ProductItem id={item._id || item.id} image={item.image} name={item.name} price={item.price} />
-                  </div>
-                ))}
-              </div>
+          {items.map((item) => (
+            <div
+              key={item._id || item.id}
+              className="flex-shrink-0 px-2"
+              style={{ flexBasis: `${itemWidth}%` }}
+            >
+              <ProductItem
+                id={item._id || item.id}
+                image={item.image}
+                name={item.name}
+                price={item.price}
+                description={item.description}
+                rating={item.rating}
+              />
             </div>
           ))}
         </div>
       </div>
 
       {/* controls */}
-      {max > 1 && (
+      {maxIndex > 0 && (
         <>
           <button
             aria-label="Previous"
@@ -82,7 +86,7 @@ const MultiCardCarousel = ({ items = [], interval = 3500 }) => {
           </button>
 
           <div className="flex justify-center gap-2 mt-4">
-            {slides.map((_, i) => (
+            {Array.from({ length: maxIndex + 1 }, (_, i) => (
               <button
                 key={i}
                 onClick={() => setIndex(i)}

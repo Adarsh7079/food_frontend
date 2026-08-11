@@ -11,7 +11,6 @@ import PlaceOrder from "./pages/PlaceOrder";
 import Orders from "./pages/Orders";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import SearchBar from "./components/SearchBar";
 import { ToastContainer } from "react-toastify";
 import Verify from "./pages/Verify";
 import VerifyEmail from "./pages/VerifyEmail";
@@ -22,7 +21,6 @@ const App = () => {
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
       <ToastContainer />
       <Navbar />
-      <SearchBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />

@@ -487,7 +487,7 @@ const SpecialOffers = () => {
 
                       {/* RATING */}
 
-                      <div className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-700 bg-amber-200/40 px-2 py-0.5 rounded-full mb-1">
+                      <div className="inline-flex items-center gap-1 text-[11px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded-full mb-1">
 
                         <span>
                           ★ {item.rating}

@@ -17,7 +17,8 @@ const Navbar = () => {
     useState(false);
 
   const {
-    setShowSearch,
+    search,
+    setSearch,
     getCartCount,
     navigate,
     token,
@@ -45,15 +46,20 @@ const Navbar = () => {
 
   const cartCount = getCartCount();
 
+  const handleSearchChange = (event) => {
+    setSearch(event.target.value);
+    navigate("/menu");
+  };
+
   return (
     <>
       {/* =================================================
           STICKY NAVBAR
       ================================================== */}
 
-      <header className="sticky top-0 z-[1000] w-full bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+      <header className="sticky top-0 z-[1000] w-full border-b border-amber-100  shadow-[0_8px_30px_-18px_rgba(120,53,15,0.35)] backdrop-blur-xl">
 
-        <div className="flex items-center justify-between py-5 px-4 sm:px-8 font-medium">
+<div className="flex items-center justify-between py-3 px-3 sm:px-8 font-medium">
 
           {/* =================================================
               LOGO
@@ -78,32 +84,32 @@ const Navbar = () => {
               DESKTOP MENU
           ================================================== */}
 
-          <div className="hidden sm:flex items-center gap-8 text-sm text-gray-700">
+          <div className="hidden sm:flex items-center gap-2 rounded-full border border-amber-100 bg-amber-50/70 p-1.5 text-sm text-stone-700">
 
             <NavLink
               to="/"
-              className="hover:text-black transition-colors"
+              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-stone-900 text-amber-100 shadow-sm" : "hover:bg-white hover:text-amber-800"}`}
             >
               HOME
             </NavLink>
 
             <NavLink
               to="/menu"
-              className="hover:text-black transition-colors"
+              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-stone-900 text-amber-100 shadow-sm" : "hover:bg-white hover:text-amber-800"}`}
             >
               MENU
             </NavLink>
 
             <NavLink
               to="/about"
-              className="hover:text-black transition-colors"
+              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-stone-900 text-amber-100 shadow-sm" : "hover:bg-white hover:text-amber-800"}`}
             >
               ABOUT
             </NavLink>
 
             <NavLink
               to="/contact"
-              className="hover:text-black transition-colors"
+              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-stone-900 text-amber-100 shadow-sm" : "hover:bg-white hover:text-amber-800"}`}
             >
               CONTACT
             </NavLink>
@@ -114,18 +120,29 @@ const Navbar = () => {
               RIGHT SIDE
           ================================================== */}
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-3">
 
             {/* SEARCH */}
 
-            <img
-              onClick={() =>
-                setShowSearch(true)
-              }
-              className="w-5 cursor-pointer hover:scale-110 transition-transform"
-              src={assets.search_icon}
-              alt="Search"
-            />
+            <label className="hidden items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-2 md:flex">
+              <img className="h-4 w-4" src={assets.search_icon} alt="" />
+              <input
+                value={search}
+                onChange={handleSearchChange}
+                className="w-28 bg-transparent text-sm text-stone-800 outline-none placeholder:text-stone-400 lg:w-40"
+                placeholder="Search dishes"
+                aria-label="Search dishes"
+              />
+            </label>
+
+            <button
+              type="button"
+              onClick={() => navigate("/menu")}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-amber-100 bg-amber-50 transition hover:scale-105 hover:bg-amber-100 md:hidden"
+              aria-label="Search menu"
+            >
+              <img className="h-5 w-5" src={assets.search_icon} alt="" />
+            </button>
 
             {/* =================================================
                 PROFILE
@@ -133,18 +150,18 @@ const Navbar = () => {
 
             <div className="group relative">
 
-              <img
+              <button
+                type="button"
                 onClick={() =>
                   token
                     ? null
                     : navigate("/login")
                 }
-                className="w-5 cursor-pointer hover:scale-110 transition-transform"
-                src={
-                  assets.profile_icon
-                }
-                alt="Profile"
-              />
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-amber-100 bg-amber-50 transition hover:scale-105 hover:bg-amber-100"
+                aria-label="Profile"
+              >
+                <img className="h-5 w-5" src={assets.profile_icon} alt="" />
+              </button>
 
               {token && (
                 <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-[1100]">
@@ -193,7 +210,7 @@ const Navbar = () => {
 
             <Link
               to="/cart"
-              className="relative inline-flex"
+              className="relative inline-flex rounded-full bg-amber-50 p-2"
             >
 
               <img
@@ -235,7 +252,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(true)
               }
-              className="w-5 cursor-pointer sm:hidden"
+              className="h-10 w-10 cursor-pointer rounded-full border border-amber-100 bg-amber-50 p-2.5 transition hover:bg-amber-100 sm:hidden"
               src={assets.menu_icon}
               alt="Menu"
             />
@@ -250,6 +267,15 @@ const Navbar = () => {
           MOBILE SIDEBAR
       ================================================== */}
 
+      {visible && (
+        <button
+          type="button"
+          aria-label="Close menu"
+          onClick={() => setVisible(false)}
+          className="fixed inset-0 z-[1900] bg-stone-950/30 backdrop-blur-sm sm:hidden"
+        />
+      )}
+
       <div
         className={`
           fixed
@@ -257,8 +283,10 @@ const Navbar = () => {
           right-0
           bottom-0
           z-[2000]
-          bg-white
-          shadow-2xl
+          bg-gradient-to-b
+          from-[#fffdf8]
+          to-amber-50
+          shadow-[0_0_55px_rgba(68,38,14,0.28)]
           transform
           transition-transform
           duration-300
@@ -277,7 +305,7 @@ const Navbar = () => {
 
           {/* BACK BUTTON */}
 
-          <div className="flex items-center justify-between gap-4 p-4 border-b">
+          <div className="flex items-center justify-between gap-4 border-b border-amber-100 bg-white/70 p-4">
 
             <Link
               to="/"
@@ -299,7 +327,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(false)
               }
-              className="flex items-center gap-2 text-sm text-gray-600 hover:text-black"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-amber-200 bg-amber-50 text-sm text-amber-800 transition hover:bg-amber-100"
             >
 
               <img
@@ -307,11 +335,8 @@ const Navbar = () => {
                   assets.dropdown_icon
                 }
                 alt="Back"
+                className="h-4 w-4 rotate-180"
               />
-
-              <span>
-                Back
-              </span>
 
             </button>
 
@@ -319,13 +344,13 @@ const Navbar = () => {
 
           {/* MOBILE NAV */}
 
-          <nav className="flex-1 overflow-auto">
+          <nav className="flex-1 space-y-2 overflow-auto p-4">
 
             <NavLink
               onClick={() =>
                 setVisible(false)
               }
-              className="block py-4 pl-6 border-b hover:bg-orange-50"
+              className={({ isActive }) => `block rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-stone-900 text-amber-100 shadow-lg" : "bg-white/70 text-stone-700 hover:bg-amber-100"}`}
               to="/"
             >
               HOME
@@ -335,7 +360,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(false)
               }
-              className="block py-4 pl-6 border-b hover:bg-orange-50"
+              className={({ isActive }) => `block rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-stone-900 text-amber-100 shadow-lg" : "bg-white/70 text-stone-700 hover:bg-amber-100"}`}
               to="/menu"
             >
               MENU
@@ -345,7 +370,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(false)
               }
-              className="block py-4 pl-6 border-b hover:bg-orange-50"
+              className={({ isActive }) => `block rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-stone-900 text-amber-100 shadow-lg" : "bg-white/70 text-stone-700 hover:bg-amber-100"}`}
               to="/about"
             >
               ABOUT
@@ -355,7 +380,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(false)
               }
-              className="block py-4 pl-6 border-b hover:bg-orange-50"
+              className={({ isActive }) => `block rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-stone-900 text-amber-100 shadow-lg" : "bg-white/70 text-stone-700 hover:bg-amber-100"}`}
               to="/contact"
             >
               CONTACT
@@ -367,7 +392,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(false)
               }
-              className="flex items-center justify-between py-4 pl-6 pr-6 border-b hover:bg-orange-50"
+              className={({ isActive }) => `flex items-center justify-between rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-stone-900 text-amber-100 shadow-lg" : "bg-white/70 text-stone-700 hover:bg-amber-100"}`}
               to="/cart"
             >
 

@@ -12,6 +12,8 @@ const Menu = () => {
     cartPopupItem,
     clearCart,
     navigate,
+    search,
+    setSearch,
   } = useContext(ShopContext);
 
   // =====================================================
@@ -127,8 +129,9 @@ const Menu = () => {
     }
 
     // Search
+    const effectiveSearch = searchQuery || search;
     if (
-      searchQuery.trim() !== ""
+      effectiveSearch.trim() !== ""
     ) {
       productsCopy =
         productsCopy.filter(
@@ -136,7 +139,7 @@ const Menu = () => {
             item.name
               .toLowerCase()
               .includes(
-                searchQuery
+                effectiveSearch
                   .toLowerCase()
               )
         );
@@ -169,6 +172,7 @@ const Menu = () => {
     activeTab,
     sortType,
     searchQuery,
+    search,
     contextProducts,
   ]);
 
@@ -224,20 +228,20 @@ const Menu = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-32">
+    <div className="max-w-7xl mx-auto px-4 py-8 pb-32 sm:px-6 lg:px-8">
 
       {/* =================================================
           HEADER
       ================================================== */}
 
-      <div className="text-center mb-8">
+      <div className="mb-8 rounded-[2rem] border border-amber-100 bg-gradient-to-br from-amber-50 via-[#fffdf8] to-orange-50 px-6 py-9 text-center shadow-[0_20px_50px_-38px_rgba(146,64,14,0.45)]">
 
         <Title
           text1={"INDIAN"}
           text2={"FOOD MENU"}
         />
 
-        <p className="text-gray-500 text-sm mt-2">
+        <p className="mt-2 text-sm text-stone-600">
           Taste the authentic spices and flavors
           of traditional Indian cooking
         </p>
@@ -250,7 +254,7 @@ const Menu = () => {
 
       <div className="flex justify-center mb-8">
 
-        <div className="bg-gray-100 p-1.5 rounded-2xl flex items-center shadow-inner gap-2">
+        <div className="flex items-center gap-2 rounded-2xl border border-amber-100 bg-amber-50 p-1.5 shadow-inner">
 
           {/* VEG */}
 
@@ -271,8 +275,8 @@ const Menu = () => {
               duration-300
               ${
                 activeTab === "Veg"
-                  ? "bg-white text-green-700 shadow-md scale-105"
-                  : "text-gray-600 hover:text-green-600"
+                  ? "bg-white text-green-700 shadow-md scale-105 ring-1 ring-green-100"
+                  : "text-stone-600 hover:bg-white hover:text-green-600"
               }
             `}
           >
@@ -305,8 +309,8 @@ const Menu = () => {
               ${
                 activeTab ===
                 "Non-Veg"
-                  ? "bg-white text-red-700 shadow-md scale-105"
-                  : "text-gray-600 hover:text-red-600"
+                  ? "bg-white text-red-700 shadow-md scale-105 ring-1 ring-red-100"
+                  : "text-stone-600 hover:bg-white hover:text-red-600"
               }
             `}
           >
@@ -325,7 +329,7 @@ const Menu = () => {
           SEARCH + FILTERS
       ================================================== */}
 
-      <div className="bg-white border border-gray-200 rounded-2xl p-4 mb-8 shadow-sm flex flex-col md:flex-row gap-4 justify-between items-center">
+      <div className="mb-8 flex flex-col items-center justify-between gap-4 rounded-2xl border border-amber-100 bg-white/90 p-4 shadow-[0_14px_35px_-28px_rgba(146,64,14,0.45)] md:flex-row">
 
         {/* SEARCH */}
 
@@ -335,16 +339,17 @@ const Menu = () => {
             type="text"
             placeholder="Search Paneer, Biryani, Naan..."
             value={searchQuery}
-            onChange={(e) =>
-              setSearchQuery(
-                e.target.value
-              )
-            }
-            className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:bg-white transition-all"
+              onChange={(e) =>
+                {
+                  setSearchQuery(e.target.value);
+                  setSearch(e.target.value);
+                }
+              }
+            className="w-full rounded-xl border border-amber-200 bg-amber-50/50 py-2.5 pl-10 pr-4 text-sm text-stone-800 outline-none transition-all placeholder:text-stone-400 focus:bg-white focus:ring-2 focus:ring-amber-400"
           />
 
           <svg
-            className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5"
+            className="absolute left-3.5 top-3.5 h-4 w-4 text-amber-600"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -380,7 +385,7 @@ const Menu = () => {
                   e.target.value
                 )
               }
-              className="w-full sm:w-auto bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 cursor-pointer"
+              className="w-full cursor-pointer rounded-xl border border-amber-200 bg-amber-50/50 px-4 py-2.5 text-sm font-medium text-stone-700 outline-none focus:ring-2 focus:ring-amber-400 sm:w-auto"
             >
 
               {categories.map(
@@ -415,7 +420,7 @@ const Menu = () => {
                   e.target.value
                 )
               }
-              className="w-full sm:w-auto bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 cursor-pointer"
+              className="w-full cursor-pointer rounded-xl border border-amber-200 bg-amber-50/50 px-4 py-2.5 text-sm font-medium text-stone-700 outline-none focus:ring-2 focus:ring-amber-400 sm:w-auto"
             >
 
               <option value="relevant">
@@ -457,7 +462,7 @@ const Menu = () => {
               return (
                 <div
                   key={item._id}
-                  className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                  className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-amber-100 bg-[#fffdf8] shadow-[0_16px_40px_-30px_rgba(120,53,15,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-amber-300 hover:shadow-[0_22px_45px_-28px_rgba(120,53,15,0.48)]"
                 >
 
                   {/* ===========================
@@ -466,7 +471,7 @@ const Menu = () => {
 
                   <div>
 
-                    <div className="relative aspect-video sm:aspect-square overflow-hidden bg-gray-100">
+                    <div className="relative aspect-video overflow-hidden bg-amber-50 sm:aspect-square">
 
                       <img
                         src={
@@ -524,7 +529,7 @@ const Menu = () => {
 
                       <div className="flex justify-between items-start gap-2 mb-1">
 
-                        <h3 className="font-semibold text-gray-800 text-base group-hover:text-orange-600 transition-colors">
+                        <h3 className="text-base font-bold text-stone-800 transition-colors group-hover:text-amber-700">
 
                           {
                             item.name
@@ -533,7 +538,7 @@ const Menu = () => {
                         </h3>
 
                         {item.rating && (
-                          <span className="bg-amber-50 text-amber-700 text-xs font-bold px-2 py-0.5 rounded-md flex items-center gap-1 shrink-0">
+                          <span className="bg-green-50 text-green-700 text-xs font-bold px-2 py-0.5 rounded-md flex items-center gap-1 shrink-0">
 
                             ★{" "}
                             {
@@ -557,11 +562,11 @@ const Menu = () => {
 
                     <div>
 
-                      <span className="text-xs text-gray-400 block">
+                      <span className="block text-xs text-stone-400">
                         Price
                       </span>
 
-                      <span className="text-lg font-bold text-gray-900">
+                      <span className="text-lg font-black text-stone-900">
                         ₹
                         {
                           item.price
@@ -586,7 +591,7 @@ const Menu = () => {
                               item
                             )
                           }
-                          className="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-orange-600 text-lg font-semibold transition-colors"
+                          className="flex h-8 w-8 items-center justify-center rounded-full text-lg font-semibold text-stone-600 transition-colors hover:bg-amber-100 hover:text-amber-700"
                           aria-label="Decrease quantity"
                         >
                           −
@@ -624,7 +629,7 @@ const Menu = () => {
                             item
                           )
                         }
-                        className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-xl font-medium text-sm transition-colors shadow-sm active:scale-95"
+                        className="rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 px-5 py-2 text-sm font-bold text-white shadow-md shadow-amber-200 transition hover:from-amber-600 hover:to-orange-600 active:scale-95"
                       >
                         ADD +
                       </button>

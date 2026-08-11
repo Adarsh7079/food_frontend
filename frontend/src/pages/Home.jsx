@@ -12,12 +12,12 @@ import FAQ from "../components/Faq";
 
 const Home = () => {
   return (
-    <div className="relative min-h-screen overflow-hidden ">
+    <div className="relative min-h-screen overflow-hidden">
       {/* Dynamic Ambient Background Glows */}
-      <div className="pointer-events-none absolute left-0 top-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full " />
-      <div className="pointer-events-none absolute right-0 top-40 h-[28rem] w-[28rem] translate-x-1/3 rounded-full " />
-      <div className="pointer-events-none absolute left-1/2 top-[40%] h-[32rem] w-[32rem] -translate-x-1/2 rounded-full" />
-      <div className="pointer-events-none absolute right-1/4 bottom-32 h-[30rem] w-[30rem] rounded-full " />
+      <div className="pointer-events-none absolute left-0 top-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-300/20 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-40 h-[28rem] w-[28rem] translate-x-1/3 rounded-full bg-orange-200/20 blur-3xl" />
+      <div className="pointer-events-none absolute left-1/2 top-[40%] h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-yellow-100/50 blur-3xl" />
+      <div className="pointer-events-none absolute right-1/4 bottom-32 h-[30rem] w-[30rem] rounded-full bg-emerald-100/30 blur-3xl" />
 
       {/* Top Glass Announcement Bar */}
       <div className="relative z-20 bg-amber-500/10 backdrop-blur-md border-b border-amber-500/20 text-stone-900 px-4 py-2.5 text-center text-xs sm:text-sm font-medium flex items-center justify-center gap-2 shadow-2xs">
@@ -40,15 +40,14 @@ const Home = () => {
       {/* Main Page Content */}
       <main className="relative z-10 pb-20 space-y-14 sm:space-y-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14 sm:space-y-20">
-          
+                 {/* Menu Preview */}
+          <section>
+            <LatestCollection />
+          </section>
+
           {/* Categories Section */}
           <section>
             <Categories />
-          </section>
-
-          {/* Menu Preview */}
-          <section>
-            <LatestCollection />
           </section>
 
           {/* Tiffin / Subscription Services */}

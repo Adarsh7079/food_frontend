@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContextContext";
-import { assets } from "../assets/assets";
 import RelatedProducts from "../components/RelatedProducts";
 
 const Product = () => {
@@ -49,13 +48,11 @@ const Product = () => {
         {/* product info */}
         <div className="flex-1">
           <h1 className="font-medium text-2xl mt-2">{productData.name}</h1>
-          <div className="flex items-center gap-1 mt-2">
-            <img src={assets.star_icon} alt="" className="w-3 5" />
-            <img src={assets.star_icon} alt="" className="w-3 5" />
-            <img src={assets.star_icon} alt="" className="w-3 5" />
-            <img src={assets.star_icon} alt="" className="w-3 5" />
-            <img src={assets.star_dull_icon} alt="" className="w-3 5" />
-            <p className="pl-2">(122)</p>
+          <div className="mt-2 flex items-center gap-1 text-green-600">
+            <span aria-hidden="true">★★★★★</span>
+            <p className="pl-2 text-sm text-gray-600">
+              {productData.rating || "4.8"} (122)
+            </p>
           </div>
           <p className="mt-5 text-3xl font-medium">
             {currency}

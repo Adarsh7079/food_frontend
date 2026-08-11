@@ -96,7 +96,7 @@ const Testimonials = () => {
                 }`}
               >
                 {/* Rating Stars */}
-                <div className="flex gap-1 text-amber-500 text-sm mb-3">
+                <div className="flex gap-1 text-green-600 text-sm mb-3">
                   {[...Array(t.rating)].map((_, starIndex) => (
                     <span key={starIndex}>★</span>
                   ))}
