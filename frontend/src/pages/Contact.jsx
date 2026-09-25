@@ -250,7 +250,7 @@ const Contact = () => {
 
               {/* EMAIL */}
 
-              <p className="text-gray-800 font-semibold flex items-center gap-2">
+              {/* <p className="text-gray-800 font-semibold flex items-center gap-2">
 
                 <span>
                   ✉️ Email:
@@ -263,7 +263,7 @@ const Contact = () => {
                   araag.khana.khazana@gmail.com
                 </a>
 
-              </p>
+              </p> */}
 
               {/* HOURS */}
 
