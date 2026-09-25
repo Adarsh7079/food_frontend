@@ -37,7 +37,10 @@ html {
 
 body {
   min-height: 100vh;
-  background: radial-gradient(circle at top left, rgba(217, 167, 74, 0.18), transparent 20%), radial-gradient(circle at bottom right, rgba(30, 94, 79, 0.16), transparent 22%), linear-gradient(180deg, var(--brand-green-900) 0%, #0f352d 20%, var(--brand-cream) 100%);
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(217, 167, 74, 0.12), transparent 34rem),
+    radial-gradient(ellipse at 92% 38%, rgba(45, 103, 86, 0.08), transparent 38rem),
+    linear-gradient(180deg, #f4ebdc 0%, var(--brand-cream) 42%, var(--brand-ivory) 100%);
   background-attachment: fixed;
   color: var(--brand-dark);
 }
@@ -78,8 +81,8 @@ img {
 
 @media (max-width: 640px) {
   a.active {
-    background-color: var(--brand-orange);
-    color: white;
+    background-color: var(--brand-green-800);
+    color: var(--brand-ivory);
     border-radius: 9999px;
     padding: 0.35rem 0.7rem;
   }

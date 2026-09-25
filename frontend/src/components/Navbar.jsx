@@ -59,7 +59,7 @@ const Navbar = () => {
 
       <header className="sticky top-0 z-[1000] w-full border-b border-[#d9c9ab] bg-[#f4ebdc]/90 shadow-[0_8px_30px_-18px_rgba(18,61,48,0.35)] backdrop-blur-xl">
 
-<div className="flex items-center justify-between py-3 px-3 sm:px-8 font-medium">
+        <div className="flex items-center justify-between py-3 px-3 sm:px-8 font-medium">
 
           {/* =================================================
               LOGO
@@ -290,10 +290,9 @@ const Navbar = () => {
           transform
           transition-transform
           duration-300
-          ${
-            visible
-              ? "translate-x-0 w-full sm:w-80"
-              : "translate-x-full w-full sm:w-80"
+          ${visible
+            ? "translate-x-0 w-full sm:w-80"
+            : "translate-x-full w-full sm:w-80"
           }
         `}
         style={{
