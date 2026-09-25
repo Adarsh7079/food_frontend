@@ -5,11 +5,11 @@ const NewsLetterBox = () => {
     event.preventDefault();
   };
   return (
-    <div className="my-16 rounded-[2rem] bg-gradient-to-r from-orange-500 to-red-500 p-8 text-center text-white shadow-xl sm:p-12">
+    <div className="my-16 rounded-[2rem] bg-gradient-to-r from-[#123d30] via-[#1d4d3e] to-[#d9a74a] p-8 text-center text-[#f8eed8] shadow-xl sm:p-12">
       <p className="text-2xl font-semibold">
         Get 50% off your first order
       </p>
-      <p className="mt-3 text-sm text-orange-50 sm:text-base">
+      <p className="mt-3 text-sm text-[#f5e7c8] sm:text-base">
         Join our newsletter for offers, new dishes, and exclusive deals.
       </p>
       <form
@@ -24,7 +24,7 @@ const NewsLetterBox = () => {
         />
         <button
           type="submit"
-          className="rounded-full bg-gray-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-gray-800"
+          className="rounded-full bg-[#0d2d22] px-6 py-3 text-sm font-semibold text-[#f8eed8] transition hover:bg-[#123d30]"
         >
           Subscribe
         </button>

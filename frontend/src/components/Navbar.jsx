@@ -57,7 +57,7 @@ const Navbar = () => {
           STICKY NAVBAR
       ================================================== */}
 
-      <header className="sticky top-0 z-[1000] w-full border-b border-amber-100  shadow-[0_8px_30px_-18px_rgba(120,53,15,0.35)] backdrop-blur-xl">
+      <header className="sticky top-0 z-[1000] w-full border-b border-[#d9c9ab] bg-[#f4ebdc]/90 shadow-[0_8px_30px_-18px_rgba(18,61,48,0.35)] backdrop-blur-xl">
 
 <div className="flex items-center justify-between py-3 px-3 sm:px-8 font-medium">
 
@@ -73,9 +73,9 @@ const Navbar = () => {
             <img
               src="/logo.png"
               alt="ZaykaNest"
-              className="h-11 w-11 rounded-full object-cover sm:h-14 sm:w-14"
+              className="h-11 w-11 rounded-full object-cover sm:h-14 sm:w-14 ring-2 ring-[#123d30]"
             />
-            <span className="hidden font-serif text-xl font-bold tracking-tight text-orange-600 sm:inline sm:text-2xl">
+            <span className="hidden font-serif text-xl font-bold tracking-tight text-[#1a4f41] sm:inline sm:text-2xl">
               ZaykaNest
             </span>
           </Link>
@@ -84,32 +84,32 @@ const Navbar = () => {
               DESKTOP MENU
           ================================================== */}
 
-          <div className="hidden sm:flex items-center gap-2 rounded-full border border-amber-100 bg-amber-50/70 p-1.5 text-sm text-stone-700">
+          <div className="hidden sm:flex items-center gap-2 rounded-full border border-[#2f5d51] bg-[#123d30]/80 p-1.5 text-sm text-[#f3d7a1] shadow-inner">
 
             <NavLink
               to="/"
-              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-stone-900 text-amber-100 shadow-sm" : "hover:bg-white hover:text-amber-800"}`}
+              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-[#f6eedb] text-[#123d30] shadow-sm" : "hover:bg-[#1d4d3e] hover:text-[#f8ecda]"}`}
             >
               HOME
             </NavLink>
 
             <NavLink
               to="/menu"
-              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-stone-900 text-amber-100 shadow-sm" : "hover:bg-white hover:text-amber-800"}`}
+              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-[#123d30] text-[#f7f1e7] shadow-sm" : "hover:bg-[#f7f1e7] hover:text-[#123d30]"}`}
             >
               MENU
             </NavLink>
 
             <NavLink
               to="/about"
-              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-stone-900 text-amber-100 shadow-sm" : "hover:bg-white hover:text-amber-800"}`}
+              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-[#123d30] text-[#f7f1e7] shadow-sm" : "hover:bg-[#f7f1e7] hover:text-[#123d30]"}`}
             >
               ABOUT
             </NavLink>
 
             <NavLink
               to="/contact"
-              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-stone-900 text-amber-100 shadow-sm" : "hover:bg-white hover:text-amber-800"}`}
+              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-[#123d30] text-[#f7f1e7] shadow-sm" : "hover:bg-[#f7f1e7] hover:text-[#123d30]"}`}
             >
               CONTACT
             </NavLink>
@@ -124,12 +124,12 @@ const Navbar = () => {
 
             {/* SEARCH */}
 
-            <label className="hidden items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-2 md:flex">
+            <label className="hidden items-center gap-2 rounded-full border border-[#d9c9ab] bg-[#f7f1e7] px-3 py-2 md:flex">
               <img className="h-4 w-4" src={assets.search_icon} alt="" />
               <input
                 value={search}
                 onChange={handleSearchChange}
-                className="w-28 bg-transparent text-sm text-stone-800 outline-none placeholder:text-stone-400 lg:w-40"
+                className="w-28 bg-transparent text-sm text-[#123d30] outline-none placeholder:text-[#5d7a70] lg:w-40"
                 placeholder="Search dishes"
                 aria-label="Search dishes"
               />
@@ -138,7 +138,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={() => navigate("/menu")}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-amber-100 bg-amber-50 transition hover:scale-105 hover:bg-amber-100 md:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#2f5d51] bg-[#f3d7a1] text-[#123d30] transition hover:scale-105 hover:bg-[#efc77e] md:hidden"
               aria-label="Search menu"
             >
               <img className="h-5 w-5" src={assets.search_icon} alt="" />
@@ -157,7 +157,7 @@ const Navbar = () => {
                     ? null
                     : navigate("/login")
                 }
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-amber-100 bg-amber-50 transition hover:scale-105 hover:bg-amber-100"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d9c9ab] bg-[#f7f1e7] text-[#123d30] transition hover:scale-105 hover:bg-[#f0e0c7]"
                 aria-label="Profile"
               >
                 <img className="h-5 w-5" src={assets.profile_icon} alt="" />
@@ -210,7 +210,7 @@ const Navbar = () => {
 
             <Link
               to="/cart"
-              className="relative inline-flex rounded-full bg-amber-50 p-2"
+              className="relative inline-flex rounded-full bg-[#f7f1e7] p-2 border border-[#d9c9ab]"
             >
 
               <img
@@ -252,7 +252,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(true)
               }
-              className="h-10 w-10 cursor-pointer rounded-full border border-amber-100 bg-amber-50 p-2.5 transition hover:bg-amber-100 sm:hidden"
+              className="h-10 w-10 cursor-pointer rounded-full border border-[#d9c9ab] bg-[#f7f1e7] p-2.5 transition hover:bg-[#f0e0c7] sm:hidden"
               src={assets.menu_icon}
               alt="Menu"
             />
@@ -272,7 +272,7 @@ const Navbar = () => {
           type="button"
           aria-label="Close menu"
           onClick={() => setVisible(false)}
-          className="fixed inset-0 z-[1900] bg-stone-950/30 backdrop-blur-sm sm:hidden"
+          className="fixed inset-0 z-[1900] bg-[#0d2d22]/35 backdrop-blur-sm sm:hidden"
         />
       )}
 
@@ -305,7 +305,7 @@ const Navbar = () => {
 
           {/* BACK BUTTON */}
 
-          <div className="flex items-center justify-between gap-4 border-b border-amber-100 bg-white/70 p-4">
+          <div className="flex items-center justify-between gap-4 border-b border-[#d9c9ab] bg-[#f7f1e7]/90 p-4">
 
             <Link
               to="/"
@@ -318,7 +318,7 @@ const Navbar = () => {
                 alt="ZaykaNest"
                 className="h-10 w-10 rounded-full object-cover"
               />
-              <span className="font-serif text-lg font-bold text-orange-600">
+              <span className="font-serif text-lg font-bold text-[#123d30]">
                 ZaykaNest
               </span>
             </Link>
@@ -327,7 +327,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(false)
               }
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-amber-200 bg-amber-50 text-sm text-amber-800 transition hover:bg-amber-100"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-[#d9c9ab] bg-[#f7f1e7] text-sm text-[#123d30] transition hover:bg-[#f0e0c7]"
             >
 
               <img
@@ -350,7 +350,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(false)
               }
-              className={({ isActive }) => `block rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-stone-900 text-amber-100 shadow-lg" : "bg-white/70 text-stone-700 hover:bg-amber-100"}`}
+              className={({ isActive }) => `block rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-[#123d30] text-[#f7f1e7] shadow-lg" : "bg-white/70 text-[#123d30] hover:bg-[#f0e0c7]"}`}
               to="/"
             >
               HOME
@@ -360,7 +360,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(false)
               }
-              className={({ isActive }) => `block rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-stone-900 text-amber-100 shadow-lg" : "bg-white/70 text-stone-700 hover:bg-amber-100"}`}
+              className={({ isActive }) => `block rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-[#123d30] text-[#f7f1e7] shadow-lg" : "bg-white/70 text-[#123d30] hover:bg-[#f0e0c7]"}`}
               to="/menu"
             >
               MENU
@@ -370,7 +370,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(false)
               }
-              className={({ isActive }) => `block rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-stone-900 text-amber-100 shadow-lg" : "bg-white/70 text-stone-700 hover:bg-amber-100"}`}
+              className={({ isActive }) => `block rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-[#123d30] text-[#f7f1e7] shadow-lg" : "bg-white/70 text-[#123d30] hover:bg-[#f0e0c7]"}`}
               to="/about"
             >
               ABOUT
@@ -380,7 +380,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(false)
               }
-              className={({ isActive }) => `block rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-stone-900 text-amber-100 shadow-lg" : "bg-white/70 text-stone-700 hover:bg-amber-100"}`}
+              className={({ isActive }) => `block rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-[#123d30] text-[#f7f1e7] shadow-lg" : "bg-white/70 text-[#123d30] hover:bg-[#f0e0c7]"}`}
               to="/contact"
             >
               CONTACT
@@ -392,7 +392,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(false)
               }
-              className={({ isActive }) => `flex items-center justify-between rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-stone-900 text-amber-100 shadow-lg" : "bg-white/70 text-stone-700 hover:bg-amber-100"}`}
+              className={({ isActive }) => `flex items-center justify-between rounded-2xl px-5 py-4 text-sm font-bold tracking-wide transition ${isActive ? "bg-[#123d30] text-[#f7f1e7] shadow-lg" : "bg-white/70 text-[#123d30] hover:bg-[#f0e0c7]"}`}
               to="/cart"
             >
 

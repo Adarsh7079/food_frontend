@@ -234,14 +234,14 @@ const Menu = () => {
           HEADER
       ================================================== */}
 
-      <div className="mb-8 rounded-[2rem] border border-amber-100 bg-gradient-to-br from-amber-50 via-[#fffdf8] to-orange-50 px-6 py-9 text-center shadow-[0_20px_50px_-38px_rgba(146,64,14,0.45)]">
+      <div className="mb-8 rounded-[2rem] border border-[#1a4338] bg-[#f6efe3] px-6 py-9 text-center shadow-[0_20px_50px_-38px_rgba(18,61,48,0.45)]">
 
         <Title
           text1={"INDIAN"}
           text2={"FOOD MENU"}
         />
 
-        <p className="mt-2 text-sm text-stone-600">
+        <p className="mt-2 text-sm text-[#1a4338]">
           Taste the authentic spices and flavors
           of traditional Indian cooking
         </p>
@@ -254,7 +254,7 @@ const Menu = () => {
 
       <div className="flex justify-center mb-8">
 
-        <div className="flex items-center gap-2 rounded-2xl border border-amber-100 bg-amber-50 p-1.5 shadow-inner">
+        <div className="flex items-center gap-2 rounded-2xl border border-[#d9c9ab] bg-[#f6efe3] p-1.5 shadow-inner">
 
           {/* VEG */}
 
@@ -275,8 +275,8 @@ const Menu = () => {
               duration-300
               ${
                 activeTab === "Veg"
-                  ? "bg-white text-green-700 shadow-md scale-105 ring-1 ring-green-100"
-                  : "text-stone-600 hover:bg-white hover:text-green-600"
+                  ? "bg-[#123d30] text-[#f7f1e7] shadow-md scale-105"
+                  : "text-[#163d34] hover:bg-white hover:text-[#123d30]"
               }
             `}
           >
@@ -309,8 +309,8 @@ const Menu = () => {
               ${
                 activeTab ===
                 "Non-Veg"
-                  ? "bg-white text-red-700 shadow-md scale-105 ring-1 ring-red-100"
-                  : "text-stone-600 hover:bg-white hover:text-red-600"
+                  ? "bg-[#123d30] text-[#f7f1e7] shadow-md scale-105"
+                  : "text-[#163d34] hover:bg-white hover:text-[#123d30]"
               }
             `}
           >
@@ -329,7 +329,7 @@ const Menu = () => {
           SEARCH + FILTERS
       ================================================== */}
 
-      <div className="mb-8 flex flex-col items-center justify-between gap-4 rounded-2xl border border-amber-100 bg-white/90 p-4 shadow-[0_14px_35px_-28px_rgba(146,64,14,0.45)] md:flex-row">
+      <div className="mb-8 flex flex-col items-center justify-between gap-4 rounded-2xl border border-[#d9c9ab] bg-[#f7f1e7]/90 p-4 shadow-[0_14px_35px_-28px_rgba(18,61,48,0.45)] md:flex-row">
 
         {/* SEARCH */}
 
@@ -345,11 +345,11 @@ const Menu = () => {
                   setSearch(e.target.value);
                 }
               }
-            className="w-full rounded-xl border border-amber-200 bg-amber-50/50 py-2.5 pl-10 pr-4 text-sm text-stone-800 outline-none transition-all placeholder:text-stone-400 focus:bg-white focus:ring-2 focus:ring-amber-400"
+            className="w-full rounded-xl border border-[#d9c9ab] bg-[#f8f3ea] py-2.5 pl-10 pr-4 text-sm text-[#123d30] outline-none transition-all placeholder:text-[#5b6d62] focus:bg-white focus:ring-2 focus:ring-[#123d30]/20"
           />
 
           <svg
-            className="absolute left-3.5 top-3.5 h-4 w-4 text-amber-600"
+            className="absolute left-3.5 top-3.5 h-4 w-4 text-[#123d30]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -385,7 +385,7 @@ const Menu = () => {
                   e.target.value
                 )
               }
-              className="w-full cursor-pointer rounded-xl border border-amber-200 bg-amber-50/50 px-4 py-2.5 text-sm font-medium text-stone-700 outline-none focus:ring-2 focus:ring-amber-400 sm:w-auto"
+              className="w-full cursor-pointer rounded-xl border border-[#d9c9ab] bg-[#f8f3ea] px-4 py-2.5 text-sm font-medium text-[#123d30] outline-none focus:ring-2 focus:ring-[#123d30]/20 sm:w-auto"
             >
 
               {categories.map(
@@ -420,7 +420,7 @@ const Menu = () => {
                   e.target.value
                 )
               }
-              className="w-full cursor-pointer rounded-xl border border-amber-200 bg-amber-50/50 px-4 py-2.5 text-sm font-medium text-stone-700 outline-none focus:ring-2 focus:ring-amber-400 sm:w-auto"
+              className="w-full cursor-pointer rounded-xl border border-[#d9c9ab] bg-[#f8f3ea] px-4 py-2.5 text-sm font-medium text-[#123d30] outline-none focus:ring-2 focus:ring-[#123d30]/20 sm:w-auto"
             >
 
               <option value="relevant">
@@ -462,7 +462,7 @@ const Menu = () => {
               return (
                 <div
                   key={item._id}
-                  className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-amber-100 bg-[#fffdf8] shadow-[0_16px_40px_-30px_rgba(120,53,15,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-amber-300 hover:shadow-[0_22px_45px_-28px_rgba(120,53,15,0.48)]"
+                  className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-[#d9c9ab] bg-[#fffdf8] shadow-[0_16px_40px_-30px_rgba(18,61,48,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-[#123d30]/40 hover:shadow-[0_22px_45px_-28px_rgba(18,61,48,0.48)]"
                 >
 
                   {/* ===========================
@@ -471,7 +471,7 @@ const Menu = () => {
 
                   <div>
 
-                    <div className="relative aspect-video overflow-hidden bg-amber-50 sm:aspect-square">
+                    <div className="relative aspect-video overflow-hidden bg-[#f5ead7] sm:aspect-square">
 
                       <img
                         src={
@@ -529,7 +529,7 @@ const Menu = () => {
 
                       <div className="flex justify-between items-start gap-2 mb-1">
 
-                        <h3 className="text-base font-bold text-stone-800 transition-colors group-hover:text-amber-700">
+                        <h3 className="text-base font-bold text-[#123d30] transition-colors group-hover:text-[#1d4d3e]">
 
                           {
                             item.name
@@ -591,7 +591,7 @@ const Menu = () => {
                               item
                             )
                           }
-                          className="flex h-8 w-8 items-center justify-center rounded-full text-lg font-semibold text-stone-600 transition-colors hover:bg-amber-100 hover:text-amber-700"
+                          className="flex h-8 w-8 items-center justify-center rounded-full text-lg font-semibold text-[#123d30] transition-colors hover:bg-[#f0e0c7] hover:text-[#123d30]"
                           aria-label="Decrease quantity"
                         >
                           −
@@ -613,7 +613,7 @@ const Menu = () => {
                               item
                             )
                           }
-                          className="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-orange-600 text-lg font-semibold transition-colors"
+                          className="w-8 h-8 flex items-center justify-center text-[#123d30] hover:text-[#1d4d3e] text-lg font-semibold transition-colors"
                           aria-label="Increase quantity"
                         >
                           +
@@ -629,7 +629,7 @@ const Menu = () => {
                             item
                           )
                         }
-                        className="rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 px-5 py-2 text-sm font-bold text-white shadow-md shadow-amber-200 transition hover:from-amber-600 hover:to-orange-600 active:scale-95"
+                        className="rounded-xl bg-gradient-to-r from-[#123d30] to-[#2d6756] px-5 py-2 text-sm font-bold text-[#f7f1e7] shadow-md shadow-[#d9a74a]/20 transition hover:from-[#0d2d22] hover:to-[#1d4d3e] active:scale-95"
                       >
                         ADD +
                       </button>
@@ -670,7 +670,7 @@ const Menu = () => {
 
               setSearchQuery("");
             }}
-            className="mt-3 text-sm text-orange-600 hover:text-orange-700 font-semibold underline"
+            className="mt-3 text-sm text-[#123d30] hover:text-[#1d4d3e] font-semibold underline"
           >
             Clear Search &
             Filters
@@ -713,7 +713,7 @@ const Menu = () => {
 
                     {/* TOTAL COUNT */}
 
-                    <span className="absolute -top-2 -right-2 bg-amber-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center">
+                    <span className="absolute -top-2 -right-2 bg-[#d9a74a] text-[#123d30] text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center">
                       {
                         totalCartItems
                       }
@@ -723,7 +723,7 @@ const Menu = () => {
 
                   <div className="min-w-0">
 
-                    <p className="text-amber-400 text-[10px] uppercase tracking-widest font-bold">
+                    <p className="text-[#f3d7a1] text-[10px] uppercase tracking-widest font-bold">
                       Added to cart
                     </p>
 
@@ -787,7 +787,7 @@ const Menu = () => {
                         "/cart"
                       )
                     }
-                    className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-black text-xs sm:text-sm px-4 sm:px-6 py-3 rounded-xl shadow-lg active:scale-95 transition-all"
+                    className="bg-gradient-to-r from-[#123d30] to-[#2d6756] hover:from-[#0d2d22] hover:to-[#1d4d3e] text-white font-black text-xs sm:text-sm px-4 sm:px-6 py-3 rounded-xl shadow-lg active:scale-95 transition-all"
                   >
 
                     <span className="sm:hidden">

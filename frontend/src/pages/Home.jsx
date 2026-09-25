@@ -14,20 +14,40 @@ const Home = () => {
   return (
     <div className="relative min-h-screen overflow-hidden">
       {/* Dynamic Ambient Background Glows */}
-      <div className="pointer-events-none absolute left-0 top-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-300/20 blur-3xl" />
-      <div className="pointer-events-none absolute right-0 top-40 h-[28rem] w-[28rem] translate-x-1/3 rounded-full bg-orange-200/20 blur-3xl" />
-      <div className="pointer-events-none absolute left-1/2 top-[40%] h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-yellow-100/50 blur-3xl" />
-      <div className="pointer-events-none absolute right-1/4 bottom-32 h-[30rem] w-[30rem] rounded-full bg-emerald-100/30 blur-3xl" />
+      <div className="pointer-events-none absolute left-0 top-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d9a74a]/15 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-40 h-[28rem] w-[28rem] translate-x-1/3 rounded-full bg-[#2d6756]/10 blur-3xl" />
+      <div className="pointer-events-none absolute left-1/2 top-[40%] h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-[#f7f1e7]/80 blur-3xl" />
+      <div className="pointer-events-none absolute right-1/4 bottom-32 h-[30rem] w-[30rem] rounded-full bg-[#123d30]/10 blur-3xl" />
 
       {/* Top Glass Announcement Bar */}
-      <div className="relative z-20 bg-amber-500/10 backdrop-blur-md border-b border-amber-500/20 text-stone-900 px-4 py-2.5 text-center text-xs sm:text-sm font-medium flex items-center justify-center gap-2 shadow-2xs">
+      <div className="relative z-20 bg-[#123d30] text-[#f7f1e7] border-b border-[#2f5d51] px-4 py-2.5 text-center text-xs sm:text-sm font-medium flex items-center justify-center gap-2 shadow-2xs">
         <span className="flex h-2 w-2 relative">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f3d7a1] opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#f3d7a1]"></span>
         </span>
         <span>
-          <strong className="font-bold text-amber-900">ZaykaNest is Live!</strong> Enjoy dinner specials & authentic home-style meals delivered piping hot.
+          <strong className="font-bold text-[#f7dca7]">ZaykaNest is Live!</strong> Enjoy dinner specials & authentic home-style meals delivered piping hot.
         </span>
+      </div>
+
+      <div className="relative z-10 mt-3 overflow-hidden border-y border-[#123d30]/10 bg-[#123d30] text-[#f8eed8] shadow-inner">
+        <div className="flex min-w-max animate-[scroll_18s_linear_infinite] items-center gap-8 whitespace-nowrap px-4 py-2.5 text-xs font-bold uppercase tracking-[0.22em] sm:text-sm">
+          <span>Flat 20% Off Orders Above ₹499</span>
+          <span className="text-[#f3d7a1]">•</span>
+          <span>Free Delivery in 30 Minutes</span>
+          <span className="text-[#f3d7a1]">•</span>
+          <span>New Combo Meals Every Day</span>
+          <span className="text-[#f3d7a1]">•</span>
+          <span>Lunch Special ₹199</span>
+          <span className="text-[#f3d7a1]">•</span>
+          <span>Flat 20% Off Orders Above ₹499</span>
+          <span className="text-[#f3d7a1]">•</span>
+          <span>Free Delivery in 30 Minutes</span>
+          <span className="text-[#f3d7a1]">•</span>
+          <span>New Combo Meals Every Day</span>
+          <span className="text-[#f3d7a1]">•</span>
+          <span>Lunch Special ₹199</span>
+        </div>
       </div>
 
       {/* Hero Header */}

@@ -25,9 +25,9 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden rounded-[2.5rem] bg-amber-50/40 backdrop-blur-md border border-amber-200/60 p-6 sm:p-10 lg:p-12 shadow-lg">
+    <section className="relative overflow-hidden rounded-[2.5rem] bg-[#f7f1e7] backdrop-blur-md border border-[#d9c4a2] p-6 sm:p-10 lg:p-12 shadow-lg">
       {/* Background Soft Glow */}
-      <div className="absolute -right-8 top-10 h-64 w-64 rounded-full bg-amber-400/20 blur-3xl pointer-events-none" />
+      <div className="absolute -right-8 top-10 h-64 w-64 rounded-full bg-[#d9a74a]/15 blur-3xl pointer-events-none" />
 
       {/* Main Grid */}
       <div className="relative grid gap-8 lg:grid-cols-2 items-center">
@@ -39,14 +39,14 @@ const Hero = () => {
               alt="ZaykaNest"
               className="h-16 w-16 rounded-full object-cover shadow-sm"
             />
-            <span className="inline-flex items-center rounded-full bg-amber-500/10 backdrop-blur-md px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-amber-900 border border-amber-500/20">
+            <span className="inline-flex items-center rounded-full bg-[#123d30]/10 backdrop-blur-md px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#123d30] border border-[#123d30]/20">
               Cloud Kitchen • ZaykaNest
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-stone-900 leading-tight font-serif">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#1c2b20] leading-tight font-serif">
             Authentic  Indian Food at{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#123d30] via-[#2d6756] to-[#d9a74a]">
               ZaykaNest
             </span>
           </h1>
@@ -59,30 +59,30 @@ const Hero = () => {
           <div className="flex flex-wrap gap-4 pt-2">
             <a
               href="/menu"
-              className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 active:scale-95 px-8 py-3.5 text-sm font-bold text-white shadow-md transition-all duration-200"
+              className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#123d30] to-[#2d6756] hover:from-[#0d2d22] hover:to-[#1d4d3e] active:scale-95 px-8 py-3.5 text-sm font-bold text-[#f7f1e7] shadow-md transition-all duration-200"
             >
               Order Now
             </a>
             <a
               href="/menu"
-              className="inline-flex items-center justify-center rounded-2xl border border-amber-300/80 bg-amber-100/40 hover:bg-amber-100/70 backdrop-blur-md px-8 py-3.5 text-sm font-bold text-amber-900 transition-all duration-200"
+              className="inline-flex items-center justify-center rounded-2xl border border-[#123d30]/30 bg-[#f3d7a1]/40 hover:bg-[#f3d7a1]/60 backdrop-blur-md px-8 py-3.5 text-sm font-bold text-[#123d30] transition-all duration-200"
             >
               View Menu
             </a>
           </div>
 
           {/* Highlights Bar */}
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-amber-50/60 backdrop-blur-md p-4 border border-amber-200/50 shadow-2xs">
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-[#f3d7a1]/20 backdrop-blur-md p-4 border border-[#d9a74a]/40 shadow-2xs">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-stone-800">
-              <span className="rounded-xl bg-amber-200/60 p-2 text-amber-800">🫓</span>
+              <span className="rounded-xl bg-[#d9a74a]/20 p-2 text-[#123d30]">🫓</span>
               Fresh Tandoori
             </div>
             <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-stone-800">
-              <span className="rounded-xl bg-amber-200/60 p-2 text-amber-800">🚀</span>
+              <span className="rounded-xl bg-[#d9a74a]/20 p-2 text-[#123d30]">🚀</span>
               Fast Delivery
             </div>
             <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-stone-800">
-              <span className="rounded-xl bg-amber-200/60 p-2 text-amber-800">🏡</span>
+              <span className="rounded-xl bg-[#d9a74a]/20 p-2 text-[#123d30]">🏡</span>
               Ghar Jaisa Swad
             </div>
           </div>
@@ -90,7 +90,7 @@ const Hero = () => {
 
         {/* Right Side Main Hero Image */}
         <div className="flex justify-center items-center">
-          <div className="relative w-full max-w-md overflow-hidden rounded-3xl bg-amber-100/30 backdrop-blur-md p-3 border border-amber-200/60 shadow-md group">
+          <div className="relative w-full max-w-md overflow-hidden rounded-3xl bg-[#f3d7a1]/20 backdrop-blur-md p-3 border border-[#d9a74a]/40 shadow-md group">
             <img
               src={uttapam}
               alt="Maa Ka Rasoi North Indian Thali"
@@ -101,7 +101,7 @@ const Hero = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="mt-12 border-t border-amber-200/50 pt-8">
+      <div className="mt-12 border-t border-[#d9a74a]/30 pt-8">
         <div className="grid gap-6 lg:grid-cols-3 items-center">
 
           {/* Best Delivered Categories */}
@@ -112,14 +112,14 @@ const Hero = () => {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {categories.map((cat) => (
                 <div key={cat.name} className="flex flex-col items-center group cursor-pointer text-center">
-                  <div className="w-20 h-20 rounded-full bg-amber-100/50 p-1 backdrop-blur-md border border-amber-300/60 shadow-sm transition transform group-hover:scale-108 group-hover:border-amber-500/80">
+                  <div className="w-20 h-20 rounded-full bg-[#f3d7a1]/25 p-1 backdrop-blur-md border border-[#d9a74a]/60 shadow-sm transition transform group-hover:scale-108 group-hover:border-[#d9a74a]">
                     <img
                       src={cat.image}
                       alt={cat.name}
                       className="w-full h-full object-cover rounded-full"
                     />
                   </div>
-                  <span className="mt-2 text-xs sm:text-sm font-bold text-stone-800 group-hover:text-amber-700 transition-colors">
+                  <span className="mt-2 text-xs sm:text-sm font-bold text-stone-800 group-hover:text-[#123d30] transition-colors">
                     {cat.name}
                   </span>
                 </div>
@@ -128,8 +128,8 @@ const Hero = () => {
           </div>
 
           {/* Opening Offer Card */}
-          <div className="rounded-2xl border border-amber-300/60 bg-gradient-to-br from-amber-200/40 via-amber-100/30 to-orange-100/40 backdrop-blur-md p-5 shadow-xs">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-900 bg-amber-300/50 px-2.5 py-1 rounded-md border border-amber-400/30">
+          <div className="rounded-2xl border border-[#d9a74a]/40 bg-gradient-to-br from-[#f3d7a1]/35 via-[#f7f1e7]/40 to-[#d9a74a]/20 backdrop-blur-md p-5 shadow-xs">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#123d30] bg-[#f3d7a1]/60 px-2.5 py-1 rounded-md border border-[#d9a74a]/50">
               Opening Offer
             </span>
             <p className="mt-2 text-lg font-bold text-stone-900">

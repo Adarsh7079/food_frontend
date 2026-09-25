@@ -32,9 +32,9 @@ const OurPolicy = () => {
         {policies.map((policy) => (
           <div
             key={policy.id}
-            className="group bg-amber-50/40 backdrop-blur-md border border-amber-200/60 hover:border-amber-400/80 rounded-3xl p-6 sm:p-8 text-center shadow-xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col items-center justify-between"
+            className="group bg-[#f7f1e7] backdrop-blur-md border border-[#d9c4a2] hover:border-[#123d30]/50 rounded-3xl p-6 sm:p-8 text-center shadow-xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col items-center justify-between"
           >
-            <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 backdrop-blur-xs flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-2xs">
+            <div className="w-16 h-16 rounded-2xl bg-[#123d30]/10 border border-[#123d30]/20 backdrop-blur-xs flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-2xs">
               {policy.icon ? (
                 <img
                   src={policy.icon}

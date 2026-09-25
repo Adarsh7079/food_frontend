@@ -105,7 +105,7 @@ const Contact = () => {
           QUICK ORDER BANNER
       ====================================================== */}
 
-      <div className="mt-8 relative overflow-hidden rounded-3xl bg-gradient-to-r from-orange-500 via-amber-500 to-orange-400 shadow-lg">
+      <div className="mt-8 relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#123d30] via-[#1d4d3e] to-[#d9a74a] p-8 text-center text-[#f8eed8] shadow-lg">
 
         <div className="absolute -right-10 -top-16 w-44 h-44 bg-white/10 rounded-full blur-2xl" />
 
@@ -142,7 +142,7 @@ const Contact = () => {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold text-sm px-5 py-3 rounded-xl shadow-md hover:shadow-lg active:scale-95 transition-all"
+              className="inline-flex items-center justify-center gap-2 bg-[#1f5a49] hover:bg-[#123d30] text-white font-bold text-sm px-5 py-3 rounded-xl shadow-md hover:shadow-lg active:scale-95 transition-all"
             >
               <span className="text-lg">
                 💬
@@ -155,7 +155,7 @@ const Contact = () => {
 
             <a
               href="tel:+919709628329"
-              className="inline-flex items-center justify-center gap-2 bg-white hover:bg-orange-50 text-orange-600 font-bold text-sm px-5 py-3 rounded-xl shadow-md active:scale-95 transition-all"
+              className="inline-flex items-center justify-center gap-2 bg-white hover:bg-[#fff4e6] text-[#e77a27] font-bold text-sm px-5 py-3 rounded-xl shadow-md active:scale-95 transition-all"
             >
               <span className="text-lg">
                 📞
@@ -179,7 +179,7 @@ const Contact = () => {
             LEFT SIDE
         ==================================================== */}
 
-        <div className="w-full lg:w-1/2 flex flex-col justify-between bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+        <div className="w-full lg:w-1/2 flex flex-col justify-between bg-[#f7f1e7] border border-[#d9c9ab] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
 
           <div className="relative h-64 sm:h-80 overflow-hidden">
 
@@ -191,7 +191,7 @@ const Contact = () => {
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-            <div className="absolute top-4 left-4 bg-orange-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md uppercase tracking-wider">
+            <div className="absolute top-4 left-4 bg-gradient-to-r from-[#123d30] to-[#2d6756] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md uppercase tracking-wider">
               Cloud Kitchen Hub
             </div>
 
@@ -211,11 +211,11 @@ const Contact = () => {
 
           {/* CONTACT DETAILS */}
 
-          <div className="p-6 sm:p-8 flex flex-col gap-4 text-gray-600 text-sm">
+          <div className="p-6 sm:p-8 flex flex-col gap-4 text-[#365548] text-sm">
 
             <div>
 
-              <p className="font-bold text-gray-900 text-base mb-1">
+              <p className="font-bold text-[#123d30] text-base mb-1">
                 📍 Our Kitchen Location
               </p>
 
@@ -241,7 +241,7 @@ const Contact = () => {
 
                 <a
                   href="tel:+919709628329"
-                  className="text-gray-600 hover:text-orange-600 transition-colors"
+                  className="text-[#123d30] hover:text-[#1d4d3e] transition-colors"
                 >
                   +91 97096 28329
                 </a>
@@ -309,7 +309,7 @@ const Contact = () => {
 
           <div className="mb-6">
 
-            <span className="inline-block text-[10px] uppercase tracking-widest font-bold text-orange-600 bg-orange-100 px-3 py-1 rounded-full mb-2">
+            <span className="inline-block text-[10px] uppercase tracking-widest font-bold text-[#123d30] bg-[#dfeae4] px-3 py-1 rounded-full mb-2">
               We'd love to hear from you
             </span>
 
@@ -438,7 +438,7 @@ const Contact = () => {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="How can we help you today?"
-                className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all resize-none"
+                className="w-full bg-white border border-[#d9c9ab] rounded-xl px-4 py-2.5 text-sm text-[#123d30] focus:outline-none focus:ring-2 focus:ring-[#123d30]/20 transition-all resize-none"
               />
 
             </div>
@@ -450,8 +450,8 @@ const Contact = () => {
               disabled={loading}
               className={`text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-sm text-sm mt-2 ${
                 loading
-                  ? "bg-orange-300 cursor-not-allowed"
-                  : "bg-orange-500 hover:bg-orange-600 active:scale-95"
+                  ? "bg-[#2d6756] cursor-not-allowed"
+                  : "bg-gradient-to-r from-[#123d30] to-[#2d6756] active:scale-95"
               }`}
             >
 
