@@ -1,5 +1,4 @@
 import React from "react";
-import { assets } from "../assets/assets";
 import NewsLetterBox from "../components/NewsLetterBox";
 import Title from "../components/Title";
 
@@ -46,8 +45,8 @@ const About = () => {
       <div className="flex flex-col md:flex-row gap-12 my-12 items-center">
         <div className="w-full md:w-1/2 overflow-hidden rounded-2xl shadow-lg">
           <img
-            src={assets.about_img || "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop"}
-            alt="Our Kitchen"
+            src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1200&auto=format&fit=crop&q=85"
+            alt="Our team preparing fresh meals in the kitchen"
             className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-500"
           />
         </div>

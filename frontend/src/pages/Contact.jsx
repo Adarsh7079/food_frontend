@@ -438,7 +438,7 @@ const Contact = () => {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="How can we help you today?"
-                className="w-full bg-white border border-[#d9c9ab] rounded-xl px-4 py-2.5 text-sm text-[#123d30] focus:outline-none focus:ring-2 focus:ring-[#123d30]/20 transition-all resize-none"
+                className="w-full resize-none rounded-xl border border-[#d9c9ab] bg-[#fffefa] px-4 py-2.5 text-sm text-[#2a1f1d] placeholder:text-[#8b938b] transition-all focus:border-[#2d6756] focus:outline-none focus:ring-2 focus:ring-[#2d6756]/15"
               />
 
             </div>
@@ -485,11 +485,11 @@ const Contact = () => {
 
       <div className="text-center mb-10">
 
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-[#52665d]">
           Good food tastes better when shared. ❤️
         </p>
 
-        <p className="text-xs text-gray-400 mt-1">
+        <p className="mt-1 text-xs text-[#718078]">
           Thank you for choosing us for your meals.
         </p>
 

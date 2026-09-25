@@ -84,32 +84,32 @@ const Navbar = () => {
               DESKTOP MENU
           ================================================== */}
 
-          <div className="hidden sm:flex items-center gap-2 rounded-full border border-[#2f5d51] bg-[#123d30]/80 p-1.5 text-sm text-[#f3d7a1] shadow-inner">
+          <div className="hidden xl:flex items-center gap-2 rounded-full border border-[#2f5d51] bg-[#123d30]/80 p-1.5 text-sm text-[#f3d7a1] shadow-inner">
 
             <NavLink
               to="/"
-              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-[#f6eedb] text-[#123d30] shadow-sm" : "hover:bg-[#1d4d3e] hover:text-[#f8ecda]"}`}
+              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-[#f3d7a1] text-[#123d30] shadow-sm" : "text-[#fffaf2]/90 hover:bg-white/10 hover:text-white"}`}
             >
               HOME
             </NavLink>
 
             <NavLink
               to="/menu"
-              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-[#123d30] text-[#f7f1e7] shadow-sm" : "hover:bg-[#f7f1e7] hover:text-[#123d30]"}`}
+              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-[#f3d7a1] text-[#123d30] shadow-sm" : "text-[#fffaf2]/90 hover:bg-white/10 hover:text-white"}`}
             >
               MENU
             </NavLink>
 
             <NavLink
               to="/about"
-              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-[#123d30] text-[#f7f1e7] shadow-sm" : "hover:bg-[#f7f1e7] hover:text-[#123d30]"}`}
+              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-[#f3d7a1] text-[#123d30] shadow-sm" : "text-[#fffaf2]/90 hover:bg-white/10 hover:text-white"}`}
             >
               ABOUT
             </NavLink>
 
             <NavLink
               to="/contact"
-              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-[#123d30] text-[#f7f1e7] shadow-sm" : "hover:bg-[#f7f1e7] hover:text-[#123d30]"}`}
+              className={({ isActive }) => `rounded-full px-4 py-2 font-semibold transition ${isActive ? "bg-[#f3d7a1] text-[#123d30] shadow-sm" : "text-[#fffaf2]/90 hover:bg-white/10 hover:text-white"}`}
             >
               CONTACT
             </NavLink>
@@ -252,7 +252,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(true)
               }
-              className="h-10 w-10 cursor-pointer rounded-full border border-[#d9c9ab] bg-[#f7f1e7] p-2.5 transition hover:bg-[#f0e0c7] sm:hidden"
+              className="h-10 w-10 cursor-pointer rounded-full border border-[#d9c9ab] bg-[#f7f1e7] p-2.5 transition hover:bg-[#f0e0c7] xl:hidden"
               src={assets.menu_icon}
               alt="Menu"
             />
@@ -272,7 +272,7 @@ const Navbar = () => {
           type="button"
           aria-label="Close menu"
           onClick={() => setVisible(false)}
-          className="fixed inset-0 z-[1900] bg-[#0d2d22]/35 backdrop-blur-sm sm:hidden"
+          className="fixed inset-0 z-[1900] bg-[#0d2d22]/35 backdrop-blur-sm xl:hidden"
         />
       )}
 
@@ -285,8 +285,8 @@ const Navbar = () => {
           z-[2000]
           bg-gradient-to-b
           from-[#fffdf8]
-          to-amber-50
-          shadow-[0_0_55px_rgba(68,38,14,0.28)]
+          to-[#e8f0e9]
+          shadow-[0_0_55px_rgba(18,61,48,0.22)]
           transform
           transition-transform
           duration-300
@@ -300,7 +300,7 @@ const Navbar = () => {
         }}
       >
 
-        <div className="flex flex-col text-gray-700 h-full">
+        <div className="flex flex-col text-[#123d30] h-full">
 
           {/* BACK BUTTON */}
 
