@@ -61,7 +61,7 @@ const PlaceOrder = () => {
       .map((item) => `• ${item.name} × ${item.quantity} — ₹${item.price * item.quantity}`)
       .join("\n");
     const message = [
-      "*New Khana Khazana COD Order*",
+      "*New ZaykaNest COD Order*",
       `Customer: ${formData.firstName} ${formData.lastName}`,
       `Phone: ${formData.phone}`,
       `Email: ${formData.email}`,

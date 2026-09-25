@@ -36,18 +36,18 @@ const Hero = () => {
           <div className="flex items-center gap-3">
             <img
               src="/logo.png"
-              alt="Khana Khazana"
+              alt="ZaykaNest"
               className="h-16 w-16 rounded-full object-cover shadow-sm"
             />
             <span className="inline-flex items-center rounded-full bg-amber-500/10 backdrop-blur-md px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-amber-900 border border-amber-500/20">
-              Cloud Kitchen • Khana Khazana
+              Cloud Kitchen • ZaykaNest
             </span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-stone-900 leading-tight font-serif">
             Authentic  Indian Food at{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700">
-              Khana Khazana
+              ZaykaNest
             </span>
           </h1>
 

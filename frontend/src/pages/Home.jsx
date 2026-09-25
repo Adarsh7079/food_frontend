@@ -26,7 +26,7 @@ const Home = () => {
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
         <span>
-          <strong className="font-bold text-amber-900">Khana Khazana is Live!</strong> Enjoy dinner specials & authentic home-style meals delivered piping hot.
+          <strong className="font-bold text-amber-900">ZaykaNest is Live!</strong> Enjoy dinner specials & authentic home-style meals delivered piping hot.
         </span>
       </div>
 

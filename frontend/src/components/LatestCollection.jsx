@@ -19,9 +19,9 @@ const LatestCollection = () => {
         <span className="inline-flex rounded-full bg-green-50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-green-700 ring-1 ring-green-200">
           Freshly prepared
         </span>
-        <div className="mt-3"><Title text1={"KHANA KHAZANA"} text2={"MENU"} /></div>
+        <div className="mt-3"><Title text1={"ZAYKANEST"} text2={"MENU"} /></div>
         <p className="mx-auto mt-3 max-w-2xl text-sm text-slate-600 sm:text-base">
-          Explore a selection of fresh, flavourful dishes from Khana Khazana.
+          Explore a selection of fresh, flavourful dishes from ZaykaNest.
         </p>
       </div>
 

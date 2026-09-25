@@ -68,15 +68,15 @@ const Navbar = () => {
           <Link
             to="/"
             className="flex items-center gap-2"
-            aria-label="Khana Khazana home"
+            aria-label="ZaykaNest home"
           >
             <img
               src="/logo.png"
-              alt="Khana Khazana"
+              alt="ZaykaNest"
               className="h-11 w-11 rounded-full object-cover sm:h-14 sm:w-14"
             />
             <span className="hidden font-serif text-xl font-bold tracking-tight text-orange-600 sm:inline sm:text-2xl">
-              Khana Khazana
+              ZaykaNest
             </span>
           </Link>
 
@@ -311,15 +311,15 @@ const Navbar = () => {
               to="/"
               onClick={() => setVisible(false)}
               className="flex items-center gap-2"
-              aria-label="Khana Khazana home"
+              aria-label="ZaykaNest home"
             >
               <img
                 src="/logo.png"
-                alt="Khana Khazana"
+                alt="ZaykaNest"
                 className="h-10 w-10 rounded-full object-cover"
               />
               <span className="font-serif text-lg font-bold text-orange-600">
-                Khana Khazana
+                ZaykaNest
               </span>
             </Link>
 

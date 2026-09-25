@@ -80,7 +80,7 @@ const Contact = () => {
   const whatsappNumber = "919709628329";
 
   const whatsappMessage = encodeURIComponent(
-    "Hello Khana Khazana! 👋\n\nI want to place an order. Please help me with the available food items and ordering process."
+    "Hello ZaykaNest! 👋\n\nI want to place an order. Please help me with the available food items and ordering process."
   );
 
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;

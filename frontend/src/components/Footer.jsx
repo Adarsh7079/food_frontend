@@ -17,11 +17,11 @@ const Footer = () => {
           <div className="flex items-center gap-3">
             <img
               src="/logo.png"
-              alt="Khana Khazana"
+              alt="ZaykaNest"
               className="h-16 w-16 rounded-full border border-amber-300/30 object-cover"
             />
             <div>
-              <p className="font-serif text-2xl font-bold text-amber-200">Khana Khazana</p>
+              <p className="font-serif text-2xl font-bold text-amber-200">ZaykaNest</p>
               <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-amber-400">Ghar jaisa swaad</p>
             </div>
           </div>
@@ -73,7 +73,7 @@ const Footer = () => {
       </div>
       <div className="relative border-t border-amber-100/15">
         <p className="py-5 text-center text-xs text-stone-400 sm:text-sm">
-          Copyright 2026 © Khana Khazana · Made with love and fresh ingredients.
+          Copyright 2026 © ZaykaNest · Made with love and fresh ingredients.
         </p>
       </div>
     </footer>
