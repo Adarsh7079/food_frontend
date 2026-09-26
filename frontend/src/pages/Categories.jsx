@@ -57,6 +57,7 @@ const SpecialOffers = () => {
   const [isCarouselPaused, setIsCarouselPaused] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const {
+    products,
     cartItems,
     addToCart,
     updateQuantity,
@@ -64,6 +65,25 @@ const SpecialOffers = () => {
     cartPopupItem,
     clearCart,
   } = useContext(ShopContext);
+  const catalogProducts = products?.length
+    ? products
+    : defaultIndianFoodItems;
+  const groupedFoodItems = catalogProducts.reduce((groups, item) => {
+    const category = item.category || "Other";
+    groups[category] ??= [];
+    groups[category].push(item);
+    return groups;
+  }, {});
+  const categoryNames = Object.keys(groupedFoodItems);
+  const [selectedCategory, setSelectedCategory] = useState(categoryNames[0] || "");
+  const activeCategory = categoryNames.includes(selectedCategory)
+    ? selectedCategory
+    : categoryNames[0];
+  const categoryProducts = (groupedFoodItems[activeCategory] || []).map((item) => ({
+    ...item,
+    id: item._id,
+    image: Array.isArray(item.image) ? item.image[0] : item.image,
+  }));
 
   useEffect(() => {
     if (isCarouselPaused) {
@@ -453,6 +473,91 @@ const SpecialOffers = () => {
           )}
 
         </div>
+
+        <section aria-labelledby="home-category-title">
+          <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#2d6756]">
+                Cooked fresh, sorted your way
+              </span>
+              <h2 id="home-category-title" className="mt-1 font-serif text-2xl font-bold text-[#123d30] sm:text-3xl">
+                Browse by category
+              </h2>
+            </div>
+            <button
+              type="button"
+              onClick={() => navigate("/menu")}
+              className="self-start text-sm font-bold text-[#123d30] underline decoration-[#d9a74a] decoration-2 underline-offset-4 transition hover:text-[#2d6756] sm:self-auto"
+            >
+              See full menu
+            </button>
+          </div>
+
+          <div className="mb-6 flex gap-2 overflow-x-auto pb-2" role="tablist" aria-label="Food categories">
+            {categoryNames.map((category) => (
+              <button
+                key={category}
+                type="button"
+                role="tab"
+                aria-selected={activeCategory === category}
+                onClick={() => setSelectedCategory(category)}
+                className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition ${activeCategory === category ? "border-[#123d30] bg-[#123d30] text-[#fffaf2]" : "border-[#d9c9ab] bg-[#fffaf2] text-[#365548] hover:border-[#2d6756]"}`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 sm:gap-5" role="tabpanel">
+            {categoryProducts.map((item) => (
+              <article
+                key={item._id}
+                className="group overflow-hidden rounded-2xl border border-[#d9c9ab]/70 bg-[#fffaf2] shadow-sm transition hover:-translate-y-1 hover:border-[#d9a74a]/60 hover:shadow-lg"
+              >
+                <button
+                  type="button"
+                  onClick={() => setSelectedProduct(item)}
+                  className="block w-full text-left"
+                  aria-label={`View details for ${item.name}`}
+                >
+                  <div className="aspect-[4/3] overflow-hidden bg-[#f2e7cf]">
+                    {item.image ? (
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center text-4xl" aria-hidden="true">🍲</div>
+                    )}
+                  </div>
+                  <div className="px-3 pt-3 sm:px-4">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="line-clamp-2 text-sm font-bold text-[#123d30] sm:text-base">
+                        {item.name}
+                      </h3>
+                      {item.rating && <span className="shrink-0 text-xs font-bold text-[#9a702d]">★ {item.rating}</span>}
+                    </div>
+                    <p className="mt-1 line-clamp-2 min-h-9 text-xs leading-4 text-[#617168]">
+                      {item.description || "Freshly prepared with carefully selected ingredients."}
+                    </p>
+                  </div>
+                </button>
+                <div className="flex items-center justify-between gap-2 px-3 pb-3 pt-2 sm:px-4 sm:pb-4">
+                  <span className="text-sm font-black text-[#123d30]">₹{item.price}</span>
+                  <button
+                    type="button"
+                    onClick={() => handleAddToCart(item)}
+                    className="rounded-lg bg-[#123d30] px-3 py-2 text-xs font-bold text-[#fffaf2] transition hover:bg-[#2d6756] active:scale-95"
+                  >
+                    Add +
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
         {/* =================================================
             POPULAR DISHES
