@@ -18,7 +18,7 @@ const About = () => {
     },
     {
       name: "Chef Arushi",
-      role: "Executive Head Chef + Co-Founde",
+      role: "Executive Head Chef + Co-Founder",
       gender: "female",
       bio: "Crafting signature recipes, perfecting spice blends, and ensuring every dish meets top culinary standards.",
     },
@@ -69,36 +69,35 @@ const About = () => {
 
       {/* Founders & Chefs Section */}
       <div className="my-16">
-        {/* <div className="text-2xl text-center mb-10">
+        <div className="mb-10 text-center">
           <Title text1={"MEET OUR"} text2={"FOUNDERS & CHEFS"} />
-          <p className="text-gray-500 text-sm mt-2">
+          <p className="mt-2 text-sm text-[#52665d]">
             The dedicated team behind your favorite dining experience
           </p>
-        </div> */}
+        </div>
 
-        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col text-center group hover:-translate-y-1"
-            > */}
-              {/* Profile Avatar / Avatar Badge */}
-              {/* <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-orange-100 border-4 border-orange-200 group-hover:border-orange-500 transition-colors flex items-center justify-center text-3xl font-bold text-orange-600">
+              className="group flex flex-col items-center rounded-2xl border border-[#d9c9ab]/70 bg-[#fffaf2] p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#d9a74a]/70 hover:shadow-lg"
+            >
+              <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full border-2 border-[#d9a74a]/50 bg-[#e8f0e9] font-serif text-3xl font-bold text-[#123d30] transition-colors group-hover:border-[#d9a74a]">
                 {member.name.charAt(0)}
               </div>
 
-              <h3 className="text-lg font-bold text-gray-800 group-hover:text-orange-600 transition-colors">
+              <h3 className="text-lg font-bold text-[#123d30] transition-colors group-hover:text-[#2d6756]">
                 {member.name}
               </h3>
-              <p className="text-xs font-semibold text-orange-600 uppercase tracking-wider mb-3">
+              <p className="mb-3 mt-1 text-xs font-semibold uppercase tracking-wider text-[#9a702d]">
                 {member.role}
               </p>
-              <p className="text-xs text-gray-500 leading-relaxed">
+              <p className="text-sm leading-relaxed text-[#52665d]">
                 {member.bio}
               </p>
             </div>
           ))}
-        </div> */}
+        </div>
       </div>
 
       {/* Why Choose Us Section */}
