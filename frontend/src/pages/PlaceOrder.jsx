@@ -14,12 +14,11 @@ const PlaceOrder = () => {
     navigate,
     backendUrl,
     token,
-    cartItems,
     setCartItems,
-    getCartAmount,
-    delivery_fee,
+    getCartPricing,
     products,
   } = useContext(ShopContext);
+  const pricing = getCartPricing();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -32,7 +31,6 @@ const PlaceOrder = () => {
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-
     setFormData((data) => ({ ...data, [name]: value }));
   };
 
@@ -56,7 +54,7 @@ const PlaceOrder = () => {
       );
     });
 
-  const openOrderConfirmationInWhatsApp = (orderItems, total, location) => {
+  const openOrderConfirmationInWhatsApp = (orderItems, pricing, location) => {
     const itemLines = orderItems
       .map((item) => `• ${item.name} × ${item.quantity} — ₹${item.price * item.quantity}`)
       .join("\n");
@@ -71,8 +69,13 @@ const PlaceOrder = () => {
       "*Items*",
       itemLines,
       "",
+      `Subtotal: ₹${pricing.subtotal.toFixed(2)}`,
+      ...(pricing.discount > 0
+        ? [`Offer discount (${pricing.discountPercent}%): -₹${pricing.discount.toFixed(2)}`]
+        : []),
+      `Delivery: ${pricing.shippingFee === 0 ? "FREE" : `₹${pricing.shippingFee.toFixed(2)}`}`,
       `Payment: Cash on Delivery`,
-      `Total: ₹${total}`,
+      `Final amount: ₹${pricing.total.toFixed(2)}`,
     ].join("\n");
     const encodedMessage = encodeURIComponent(message);
 
@@ -119,11 +122,11 @@ const PlaceOrder = () => {
     }
 
     const location = await getLocationDetails();
-    const total = getCartAmount() + delivery_fee;
+    const pricing = getCartPricing();
     let orderData = {
       address: `${formData.firstName} ${formData.lastName}, ${formData.street}, ${formData.city}, Phone: ${formData.phone}, Email: ${formData.email}`,
       items: orderItems,
-      amount: total,
+      amount: pricing.total,
       paymentMethod: "COD",
     };
 
@@ -133,7 +136,7 @@ const PlaceOrder = () => {
       // Signed-in customers are also saved to their account order history.
       if (!token) {
         setCartItems({});
-        openOrderConfirmationInWhatsApp(orderItems, total, location);
+        openOrderConfirmationInWhatsApp(orderItems, pricing, location);
         return;
       }
 
@@ -144,7 +147,7 @@ const PlaceOrder = () => {
       );
       if (response.data.success) {
         setCartItems({});
-        openOrderConfirmationInWhatsApp(orderItems, total, location);
+        openOrderConfirmationInWhatsApp(orderItems, pricing, location);
       } else {
         toast.error(response.data.message || "Failed to place COD order.");
       }
@@ -262,8 +265,17 @@ const PlaceOrder = () => {
                   <p className="mt-2 text-xs text-gray-500">
                     Pay in cash when your order is delivered.
                   </p>
+                  <p className="mt-3 text-xs font-semibold text-[#2d6756]">
+                    {pricing.discount > 0
+                      ? `You save ₹${pricing.discount.toFixed(2)} with the ${pricing.discountPercent}% offer.`
+                      : "Get 20% off when your items total ₹499 or more."}
+                  </p>
                 </div>
                 <div className="h-5 w-5 rounded-full border border-green-500 bg-green-500"></div>
+              </div>
+              <div className="mt-4 flex items-center justify-between border-t border-green-200 pt-3">
+                <span className="text-sm font-semibold text-gray-700">Final amount to pay</span>
+                <span className="text-xl font-black text-[#123d30]">₹{pricing.total.toFixed(2)}</span>
               </div>
             </div>
           </div>

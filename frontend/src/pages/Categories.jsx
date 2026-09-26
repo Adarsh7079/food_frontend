@@ -1,44 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContextContext";
+import ProductDetailsModal from "../components/ProductDetailsModal";
+import {
+  defaultIndianFoodItems,
+  featuredFoodItems,
+  popularFoodItems,
+} from "../data/defaultIndianFoodItems";
 
-// =====================================================
-// CIRCULAR OFFERS
-// =====================================================
-
-const circularOffers = [
-  {
-    id: "1",
-    title: "Paneer Special",
-    price: "₹260",
-    tag: "Bestseller",
-    image:
-      "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&auto=format&fit=crop",
-    gradient:
-      "from-[#d9a74a] via-[#2d6756] to-[#123d30]",
-  },
-
-  {
-    id: "2",
-    title: "Chicken Biryani",
-    price: "₹320",
-    tag: "Chef Special",
-    image:
-      "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&auto=format&fit=crop",
-    gradient:
-      "from-emerald-400 via-teal-500 to-indigo-500",
-  },
-
-  {
-    id: "8",
-    title: "Mango Lassi",
-    price: "₹80",
-    tag: "Trending",
-    image:
-      "https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=500&auto=format&fit=crop",
-    gradient:
-      "from-[#f3d7a1] via-[#d9a74a] to-[#123d30]",
-  },
-];
+const circularOffers = featuredFoodItems.map((item) => ({
+  ...item,
+  id: item._id,
+  title: item.name,
+  tag: item.featuredTag,
+  image: item.image?.[0],
+  gradient: "from-[#d9a74a] via-[#2d6756] to-[#123d30]",
+}));
 
 // =====================================================
 // BANNERS
@@ -50,8 +26,7 @@ const bannerOffers = [
     title: "First Order: 20% OFF",
     subtitle: "On orders above ₹499",
     code: "WELCOME20",
-    image:
-      "https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?auto=format&fit=crop&w=800&q=80",
+    foodItemId: "1",
   },
 
   {
@@ -59,8 +34,7 @@ const bannerOffers = [
     title: "Weekend Thali Offer",
     subtitle: "Flat 15% discount",
     code: "WEEKEND15",
-    image:
-      "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80",
+    foodItemId: "3",
   },
 
   {
@@ -68,80 +42,20 @@ const bannerOffers = [
     title: "Biryani Feast Deal",
     subtitle: "Free Raita + Cold Drink",
     code: "FEASTDEAL",
-    image:
-      "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=800&q=80",
+    foodItemId: "2",
   },
 ];
 
-// =====================================================
-// POPULAR DISHES
-// =====================================================
-
-const regularItems = [
-  {
-    id: "1",
-    name: "Paneer Butter Masala",
-    rating: "4.8",
-    reviews: "120+",
-    price: "₹260",
-    image:
-      "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&auto=format&fit=crop",
-  },
-
-  {
-    id: "10",
-    name: "Tandoori Chicken",
-    rating: "4.9",
-    reviews: "250+",
-    price: "₹310",
-    image:
-      "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=500&auto=format&fit=crop",
-  },
-
-  {
-    id: "8",
-    name: "Mango Lassi",
-    rating: "4.7",
-    reviews: "95+",
-    price: "₹80",
-    image:
-      "https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=500&auto=format&fit=crop",
-  },
-
-  {
-    id: "3",
-    name: "Dal Makhani",
-    rating: "4.8",
-    reviews: "310+",
-    price: "₹220",
-    image:
-      "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=500&auto=format&fit=crop",
-  },
-
-  {
-    id: "5",
-    name: "Veg Dum Biryani",
-    rating: "4.9",
-    reviews: "180+",
-    price: "₹240",
-    image:
-      "https://images.unsplash.com/photo-1642821373181-696a54913e93?w=500&auto=format&fit=crop",
-  },
-
-  {
-    id: "7",
-    name: "Gulab Jamun (2 Pcs)",
-    rating: "4.6",
-    reviews: "85+",
-    price: "₹90",
-    image:
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop",
-  },
-];
+const regularItems = popularFoodItems.map((item) => ({
+  ...item,
+  id: item._id,
+  image: item.image?.[0],
+}));
 
 const SpecialOffers = () => {
   const [activeOffer, setActiveOffer] = useState(0);
   const [isCarouselPaused, setIsCarouselPaused] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const {
     cartItems,
     addToCart,
@@ -191,9 +105,10 @@ const SpecialOffers = () => {
 
   const handleAddToCart = async (item) => {
     await addToCart(
-      item.id,
+      item._id || item.id,
       "default"
     );
+    setSelectedProduct(null);
   };
 
   // =====================================================
@@ -372,8 +287,11 @@ const SpecialOffers = () => {
 
                   {/* Image */}
 
-                  <div
-                    className={`relative p-[3px] rounded-full bg-gradient-to-tr ${item.gradient} mb-4 shadow-md`}
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProduct(item)}
+                    aria-label={`View details for ${item.title}`}
+                    className={`relative mb-4 rounded-full bg-gradient-to-tr p-[3px] shadow-md ${item.gradient}`}
                   >
 
                     <div className="bg-white p-1 rounded-full">
@@ -386,7 +304,7 @@ const SpecialOffers = () => {
 
                     </div>
 
-                  </div>
+                  </button>
 
                   {/* Tag */}
 
@@ -394,16 +312,20 @@ const SpecialOffers = () => {
                     {item.tag}
                   </span>
 
-                  <h3 className="font-bold text-lg text-stone-900">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProduct(item)}
+                    className="font-bold text-lg text-stone-900"
+                  >
                     {item.title}
-                  </h3>
+                  </button>
 
                   {/* Price */}
 
                   <div className="mt-2">
 
                     <span className="font-black text-xl text-[#123d30] bg-[#f3d7a1]/45 px-3 py-1 rounded-lg">
-                      {item.price}
+                      ₹{item.price}
                     </span>
 
                   </div>
@@ -486,7 +408,12 @@ const SpecialOffers = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
           {bannerOffers.map(
-            (banner) => (
+            (banner) => {
+              const foodItem = defaultIndianFoodItems.find(
+                (item) => item._id === banner.foodItemId
+              );
+
+              return (
               <div
                 key={banner.id}
                 className="group bg-[#fffaf2] border border-[#d9a74a]/30 rounded-3xl overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300"
@@ -495,8 +422,8 @@ const SpecialOffers = () => {
                 <div className="h-40 overflow-hidden relative">
 
                   <img
-                    src={banner.image}
-                    alt={banner.title}
+                    src={foodItem?.image?.[0]}
+                    alt={foodItem?.name || banner.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
 
@@ -521,7 +448,8 @@ const SpecialOffers = () => {
                 </div>
 
               </div>
-            )
+              );
+            }
           )}
 
         </div>
@@ -582,17 +510,21 @@ const SpecialOffers = () => {
                           ★ {item.rating}
                         </span>
 
-                        <span className="text-stone-500 font-normal">
-                          ({item.reviews})
-                        </span>
-
                       </div>
 
                       {/* NAME */}
 
-                      <h4 className="font-bold text-xs text-stone-800 line-clamp-2 mt-1 min-h-[32px] flex items-center justify-center">
+                      <button
+                        type="button"
+                        onClick={() => setSelectedProduct(item)}
+                        className="min-h-[32px] w-full text-center font-bold text-xs text-stone-800 line-clamp-2 mt-1"
+                      >
                         {item.name}
-                      </h4>
+                      </button>
+
+                      <p className="mt-1 line-clamp-2 min-h-8 text-[10px] leading-4 text-[#52665d]">
+                        {item.description}
+                      </p>
 
                     </div>
 
@@ -601,7 +533,7 @@ const SpecialOffers = () => {
                     <div className="w-full mt-3 pt-2 border-t border-[#d9a74a]/25 flex items-center justify-between gap-2">
 
                       <span className="font-black text-sm text-stone-900">
-                        {item.price}
+                        ₹{item.price}
                       </span>
 
                       {quantity > 0 ? (
@@ -773,6 +705,13 @@ const SpecialOffers = () => {
           </div>
 
         )}
+
+      <ProductDetailsModal
+        product={selectedProduct}
+        currency="₹"
+        onClose={() => setSelectedProduct(null)}
+        onAdd={handleAddToCart}
+      />
 
     </section>
   );

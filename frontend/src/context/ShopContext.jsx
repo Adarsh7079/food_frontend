@@ -256,6 +256,27 @@ const ShopContextProvider = (props) => {
     return totalAmount;
   };
 
+  const getCartPricing = () => {
+    const subtotal = getCartAmount();
+    const qualifiesForOffer = subtotal >= 499;
+    const discount = qualifiesForOffer
+      ? Math.round(subtotal * 0.2)
+      : 0;
+    const shippingFee = subtotal === 0
+      ? 0
+      : qualifiesForOffer
+        ? 0
+        : delivery_fee;
+
+    return {
+      subtotal,
+      discount,
+      discountPercent: qualifiesForOffer ? 20 : 0,
+      shippingFee,
+      total: subtotal - discount + shippingFee,
+    };
+  };
+
   // =====================================================
   // GET PRODUCTS
   // =====================================================
@@ -271,9 +292,19 @@ const ShopContextProvider = (props) => {
           const apiProducts =
             response.data.products || [];
 
-          const mergedProducts = [
-            ...apiProducts,
-          ];
+          const mergedProducts = apiProducts.map((apiProduct) => {
+            const defaultItem = defaultIndianFoodItems.find(
+              (item) => item._id === apiProduct._id
+            );
+
+            return defaultItem
+              ? {
+                  ...defaultItem,
+                  ...apiProduct,
+                  description: apiProduct.description || defaultItem.description,
+                }
+              : apiProduct;
+          });
 
           defaultIndianFoodItems.forEach(
             (item) => {
@@ -403,6 +434,8 @@ const ShopContextProvider = (props) => {
     getCartCount,
 
     getCartAmount,
+
+    getCartPricing,
 
     navigate,
 

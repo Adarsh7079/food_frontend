@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Title from "../components/Title";
+import ProductDetailsModal from "../components/ProductDetailsModal";
 import { ShopContext } from "../context/ShopContextContext";
 import { defaultIndianFoodItems } from "../data/defaultIndianFoodItems";
 
@@ -41,6 +42,7 @@ const Menu = () => {
 
   const [sortType, setSortType] =
     useState("relevant");
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   // =====================================================
   // CATEGORIES
@@ -48,12 +50,11 @@ const Menu = () => {
 
   const categories = [
     "All",
-    "Biryani",
-    "Curries",
-    "Starters",
-    "Breads",
-    "Desserts",
-    "Drinks",
+    ...new Set(
+      sourceProducts
+        .map((item) => item.category)
+        .filter(Boolean)
+    ),
   ];
 
   // =====================================================
@@ -173,7 +174,7 @@ const Menu = () => {
     sortType,
     searchQuery,
     search,
-    contextProducts,
+    sourceProducts,
   ]);
 
   // =====================================================
@@ -473,19 +474,22 @@ const Menu = () => {
 
                     <div className="relative aspect-video overflow-hidden bg-[#f5ead7] sm:aspect-square">
 
-                      <img
-                        src={
-                          Array.isArray(
-                            item.image
-                          )
-                            ? item.image[0]
-                            : item.image
-                        }
-                        alt={
-                          item.name
-                        }
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
+                      <button
+                        type="button"
+                        onClick={() => setSelectedProduct(item)}
+                        className="h-full w-full"
+                        aria-label={`View details for ${item.name}`}
+                      >
+                        <img
+                          src={
+                            Array.isArray(item.image)
+                              ? item.image[0]
+                              : item.image
+                          }
+                          alt={item.name}
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </button>
 
                       {/* Veg / Non Veg */}
 
@@ -529,13 +533,13 @@ const Menu = () => {
 
                       <div className="flex justify-between items-start gap-2 mb-1">
 
-                        <h3 className="text-base font-bold text-[#123d30] transition-colors group-hover:text-[#1d4d3e]">
-
-                          {
-                            item.name
-                          }
-
-                        </h3>
+                        <button
+                          type="button"
+                          onClick={() => setSelectedProduct(item)}
+                          className="text-left text-base font-bold text-[#123d30] transition-colors group-hover:text-[#1d4d3e]"
+                        >
+                          {item.name}
+                        </button>
 
                         {item.rating && (
                           <span className="bg-green-50 text-green-700 text-xs font-bold px-2 py-0.5 rounded-md flex items-center gap-1 shrink-0">
@@ -549,6 +553,10 @@ const Menu = () => {
                         )}
 
                       </div>
+
+                      <p className="mt-2 line-clamp-2 min-h-10 text-xs leading-5 text-[#52665d]">
+                        {item.description || "Freshly prepared with carefully selected ingredients."}
+                      </p>
 
                     </div>
 
@@ -810,6 +818,16 @@ const Menu = () => {
           </div>
 
         )}
+
+      <ProductDetailsModal
+        product={selectedProduct}
+        currency="₹"
+        onClose={() => setSelectedProduct(null)}
+        onAdd={async (product) => {
+          await handleAddToCart(product);
+          setSelectedProduct(null);
+        }}
+      />
 
     </div>
   );

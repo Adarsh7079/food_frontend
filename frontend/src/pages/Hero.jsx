@@ -1,28 +1,14 @@
 import React from "react";
 import uttapam from "../assets/uttapam.png"; // Placeholder image for the hero section
+import { foodCategories, foodItemsByCategory } from "../data/defaultIndianFoodItems";
 const Hero = () => {
   // Main featured dish image (North Indian Deluxe Thali Feast)
   const heroImage = "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80";
 
-  // Pure North Indian Category Image URLs with Rasgulla for Desserts
-  const categories = [
-    {
-      name: "North Indian Curries",
-      image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=300&q=80", // Paneer Butter Masala
-    },
-    {
-      name: "Butter Naan & Roti",
-      image: "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=300&q=80", // Tandoori Roti & Naan
-    },
-    {
-      name: "Desi Snacks & Tikka",
-      image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=300&q=80", // Samosa / Paneer Tikka
-    },
-    {
-      name: "Sweets & Rasgulla",
-      image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=300&q=80", // Fresh Sponge Rasgulla / Mithai
-    },
-  ];
+  const categories = foodCategories.slice(0, 4).map((name) => ({
+    name,
+    image: foodItemsByCategory[name][0]?.image?.[0],
+  }));
 
   return (
     <section className="relative overflow-hidden rounded-[2.5rem] bg-[#f7f1e7] backdrop-blur-md border border-[#d9c4a2] p-6 sm:p-10 lg:p-12 shadow-lg">

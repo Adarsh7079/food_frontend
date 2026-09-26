@@ -5,15 +5,20 @@ import Title from "./Title";
 const CartTotal = () => {
   const {
     currency,
-    delivery_fee,
-    getCartAmount,
+    getCartPricing,
   } = useContext(ShopContext);
 
   // ==========================================
   // CART SUBTOTAL
   // ==========================================
 
-  const subtotal = getCartAmount();
+  const {
+    subtotal,
+    discount,
+    discountPercent,
+    shippingFee,
+    total,
+  } = getCartPricing();
 
   // ==========================================
   // FREE DELIVERY LIMIT
@@ -25,26 +30,7 @@ const CartTotal = () => {
   // CHECK FREE DELIVERY
   // ==========================================
 
-  const isFreeDelivery =
-    subtotal >= FREE_DELIVERY_LIMIT;
-
-  // ==========================================
-  // SHIPPING FEE
-  // ==========================================
-
-  const shippingFee =
-    subtotal === 0
-      ? 0
-      : isFreeDelivery
-      ? 0
-      : delivery_fee;
-
-  // ==========================================
-  // FINAL TOTAL
-  // ==========================================
-
-  const totalAmount =
-    subtotal + shippingFee;
+  const isFreeDelivery = subtotal >= FREE_DELIVERY_LIMIT;
 
   // ==========================================
   // AMOUNT LEFT FOR FREE DELIVERY
@@ -86,12 +72,31 @@ const CartTotal = () => {
             Subtotal
           </p>
 
-          <p className="font-semibold text-stone-900">
+          <p className="flex items-center gap-2 font-semibold text-stone-900">
+            {discount > 0 && (
+              <span className="text-xs text-stone-400 line-through">
+                {currency}{subtotal.toFixed(2)}
+              </span>
+            )}
+            {discount > 0 && <span className="text-stone-400">→</span>}
+            <span>
             {currency}
-            {subtotal.toFixed(2)}
+              {(subtotal - discount).toFixed(2)}
+            </span>
           </p>
 
         </div>
+
+        {discount > 0 && (
+          <div className="mt-3 flex items-center justify-between text-sm">
+            <p className="font-medium text-[#2d6756]">
+              Offer discount ({discountPercent}%)
+            </p>
+            <p className="font-bold text-[#2d6756]">
+              −{currency}{discount.toFixed(2)}
+            </p>
+          </div>
+        )}
 
         <hr className="my-3 border-amber-200/70" />
 
@@ -110,11 +115,6 @@ const CartTotal = () => {
             <div className="flex items-center gap-2">
 
               {/* OLD PRICE */}
-
-              <span className="text-xs text-stone-400 line-through">
-                {currency}
-                {delivery_fee}
-              </span>
 
               {/* FREE */}
 
@@ -204,9 +204,9 @@ const CartTotal = () => {
 
           </div>
 
-          <p className="text-xl font-black text-amber-700">
+          <p className="text-xl font-black text-[#123d30]">
             {currency}
-            {totalAmount.toFixed(2)}
+            {total.toFixed(2)}
           </p>
 
         </div>

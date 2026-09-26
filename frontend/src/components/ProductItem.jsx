@@ -1,22 +1,29 @@
 import React, { useContext, useState } from "react";
 import { ShopContext } from "../context/ShopContextContext";
-import { Link } from "react-router-dom";
+import ProductDetailsModal from "./ProductDetailsModal";
 
 const ProductItem = ({ id, image, name, price, description, rating }) => {
   const { currency, addToCart } = useContext(ShopContext);
   const [imgError, setImgError] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
   const mainSrc = Array.isArray(image) ? image[0] : image;
+  const product = { _id: id, image, name, price, description, rating };
 
   const handleAddToCart = async () => {
     await addToCart(id, "default");
+    setShowDetails(false);
   };
 
   return (
     <div className="group block text-stone-700">
       <div className="overflow-hidden rounded-[2rem] border border-[#d9c9ab] bg-[#fffdf8] shadow-[0_18px_45px_-30px_rgba(18,61,48,0.35)] transition-all duration-300 hover:-translate-y-1 hover:border-[#123d30]/40 hover:shadow-[0_24px_55px_-28px_rgba(18,61,48,0.42)]">
-        <Link to={`/product/${id}`} className="block cursor-pointer">
-        <div className="relative overflow-hidden rounded-t-[2rem] bg-[#f7f1e7]">
+        <button
+          type="button"
+          onClick={() => setShowDetails(true)}
+          className="relative block w-full overflow-hidden rounded-t-[2rem] bg-[#f7f1e7] text-left"
+          aria-label={`View details for ${name}`}
+        >
           {mainSrc && !imgError ? (
             <img
               className="h-52 w-full object-cover transition duration-500 group-hover:scale-105"
@@ -42,10 +49,13 @@ const ProductItem = ({ id, image, name, price, description, rating }) => {
           <span className="absolute left-4 top-4 rounded-full border border-[#d9c9ab] bg-[#f7f1e7]/95 px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[#123d30] shadow-sm">
             Popular
           </span>
-        </div>
-        </Link>
+        </button>
         <div className="space-y-3 p-5">
-          <Link to={`/product/${id}`} className="block">
+          <button
+            type="button"
+            onClick={() => setShowDetails(true)}
+            className="block w-full text-left"
+          >
             <div className="flex items-start justify-between gap-3">
               <p className="text-lg font-bold text-stone-900">{name}</p>
               {rating && (
@@ -55,8 +65,10 @@ const ProductItem = ({ id, image, name, price, description, rating }) => {
                 </span>
               )}
             </div>
-            <p className="mt-2 h-14 overflow-hidden text-sm text-stone-500">{description}</p>
-          </Link>
+            <p className="mt-2 line-clamp-2 min-h-10 text-sm leading-5 text-[#52665d]">
+              {description || "Freshly prepared with carefully selected ingredients."}
+            </p>
+          </button>
           <div className="flex items-center justify-between gap-3">
             <span className="rounded-full bg-[#123d30] px-4 py-2 text-sm font-bold text-[#f7f1e7] shadow-md shadow-stone-200">
               {currency}
@@ -72,6 +84,12 @@ const ProductItem = ({ id, image, name, price, description, rating }) => {
           </div>
         </div>
       </div>
+      <ProductDetailsModal
+        product={showDetails ? product : null}
+        currency={currency}
+        onClose={() => setShowDetails(false)}
+        onAdd={handleAddToCart}
+      />
     </div>
   );
 };
