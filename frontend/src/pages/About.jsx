@@ -69,21 +69,21 @@ const About = () => {
 
       {/* Founders & Chefs Section */}
       <div className="my-16">
-        <div className="text-2xl text-center mb-10">
+        {/* <div className="text-2xl text-center mb-10">
           <Title text1={"MEET OUR"} text2={"FOUNDERS & CHEFS"} />
           <p className="text-gray-500 text-sm mt-2">
             The dedicated team behind your favorite dining experience
           </p>
-        </div>
+        </div> */}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {teamMembers.map((member, index) => (
             <div
               key={index}
               className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col text-center group hover:-translate-y-1"
-            >
+            > */}
               {/* Profile Avatar / Avatar Badge */}
-              <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-orange-100 border-4 border-orange-200 group-hover:border-orange-500 transition-colors flex items-center justify-center text-3xl font-bold text-orange-600">
+              {/* <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-orange-100 border-4 border-orange-200 group-hover:border-orange-500 transition-colors flex items-center justify-center text-3xl font-bold text-orange-600">
                 {member.name.charAt(0)}
               </div>
 
@@ -98,7 +98,7 @@ const About = () => {
               </p>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* Why Choose Us Section */}
