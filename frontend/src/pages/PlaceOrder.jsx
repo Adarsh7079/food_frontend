@@ -15,10 +15,12 @@ const PlaceOrder = () => {
     backendUrl,
     token,
     setCartItems,
+    getCartCount,
     getCartPricing,
     products,
   } = useContext(ShopContext);
   const pricing = getCartPricing();
+  const hasCartItems = getCartCount() > 0;
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -121,17 +123,17 @@ const PlaceOrder = () => {
       return;
     }
 
-    const location = await getLocationDetails();
-    const pricing = getCartPricing();
-    let orderData = {
-      address: `${formData.firstName} ${formData.lastName}, ${formData.street}, ${formData.city}, Phone: ${formData.phone}, Email: ${formData.email}`,
-      items: orderItems,
-      amount: pricing.total,
-      paymentMethod: "COD",
-    };
-
     try {
       setIsSubmitting(true);
+      const location = await getLocationDetails();
+      const pricing = getCartPricing();
+      const orderData = {
+        address: `${formData.firstName} ${formData.lastName}, ${formData.street}, ${formData.city}, Phone: ${formData.phone}, Email: ${formData.email}`,
+        items: orderItems,
+        amount: pricing.total,
+        paymentMethod: "COD",
+      };
+
       // Guest orders are sent directly to the delivery team on WhatsApp.
       // Signed-in customers are also saved to their account order history.
       if (!token) {
@@ -281,13 +283,28 @@ const PlaceOrder = () => {
           </div>
 
           <div className="w-full text-end mt-8">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="bg-black text-white px-16 py-3 text-sm rounded-full"
-            >
-              {isSubmitting ? "PLACING ORDER..." : "PLACE COD ORDER"}
-            </button>
+            {hasCartItems ? (
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="rounded-full bg-[#123d30] px-10 py-3 text-sm font-bold text-white transition hover:bg-[#2d6756] disabled:cursor-wait disabled:opacity-60 sm:px-16"
+              >
+                {isSubmitting ? "PLACING ORDER..." : "PLACE COD ORDER"}
+              </button>
+            ) : (
+              <div className="flex flex-col items-end gap-3">
+                <p className="text-sm font-medium text-[#52665d]">
+                  Your cart is empty. Add food before placing your order.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => navigate("/menu")}
+                  className="rounded-full bg-[#123d30] px-8 py-3 text-sm font-bold text-white transition hover:bg-[#2d6756]"
+                >
+                  Browse menu
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
