@@ -520,7 +520,7 @@ const SpecialOffers = () => {
                   className="block w-full text-left"
                   aria-label={`View details for ${item.name}`}
                 >
-                  <div className="aspect-[4/3] overflow-hidden bg-[#f2e7cf]">
+                  <div className="aspect-4/3 overflow-hidden bg-[#f2e7cf]">
                     {item.image ? (
                       <img
                         src={item.image}

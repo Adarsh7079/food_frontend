@@ -10,7 +10,7 @@ export const defaultIndianFoodItems = [
     description:
       "Fresh poha prepared with onions, spices, and aromatic seasoning.",
     image: [
-      "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=500&auto=format&fit=crop",
+      "/food/poha.png",
     ],
   },
 
@@ -24,7 +24,7 @@ export const defaultIndianFoodItems = [
     description:
       "Crispy toasted sandwich filled with spiced potato and vegetables, finished with butter.",
     image: [
-      "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&auto=format&fit=crop",
+      "/food/aloo_sandwitch.png",
     ],
   },
 
@@ -38,7 +38,7 @@ export const defaultIndianFoodItems = [
     description:
       "Three savory gram-flour pancakes prepared with spices and fresh vegetables.",
     image: [
-      "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=500&auto=format&fit=crop",
+      "/food/besan_chilla.png",
     ],
   },
 
@@ -52,7 +52,7 @@ export const defaultIndianFoodItems = [
     description:
       "Classic hot and flavorful Maggi noodles prepared with Indian spices.",
     image: [
-      "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&auto=format&fit=crop",
+      "/food/plain_maggie.png",
     ],
   },
 
@@ -66,7 +66,7 @@ export const defaultIndianFoodItems = [
     description:
       "Classic Maggi noodles cooked with egg and flavorful spices.",
     image: [
-      "https://images.unsplash.com/photo-1552611052-33e04de081de?w=500&auto=format&fit=crop",
+      "/food/egg_maggie.png",
     ],
   },
 
@@ -81,7 +81,7 @@ export const defaultIndianFoodItems = [
     description:
       "Hot Maggi noodles topped with creamy and delicious melted cheese.",
     image: [
-      "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&auto=format&fit=crop",
+      "/food/cheese_maggie.png",
     ],
   },
 
@@ -96,7 +96,7 @@ export const defaultIndianFoodItems = [
     description:
       "Two crispy and flavorful parathas stuffed with seasoned mashed potatoes.",
     image: [
-      "https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=500&auto=format&fit=crop",
+      "/food/aloo_pratha.png",
     ],
   },
 
@@ -110,7 +110,7 @@ export const defaultIndianFoodItems = [
     description:
       "Crispy Indian flatbread stuffed with spiced onions.",
     image: [
-      "https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=500&auto=format&fit=crop",
+      "/food/aloo_pratha.png",
     ],
   },
 
@@ -124,7 +124,7 @@ export const defaultIndianFoodItems = [
     description:
       "Creamy pasta cooked in a rich white sauce with herbs and spices.",
     image: [
-      "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=500&auto=format&fit=crop",
+      "/food/white_sauce_pasta.png",
     ],
   },
 
@@ -138,7 +138,7 @@ export const defaultIndianFoodItems = [
     description:
       "Pasta tossed in a spicy and flavorful Indian-style sauce.",
     image: [
-      "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500&auto=format&fit=crop",
+      "/food/spicy_pasta.png",
     ],
   },
 
@@ -153,7 +153,7 @@ export const defaultIndianFoodItems = [
     description:
       "Soft and thick South Indian pancake topped with fresh vegetables and spices.",
     image: [
-      "https://images.unsplash.com/photo-1630383249896-424e482df921?w=500&auto=format&fit=crop",
+      "/food/uttapam.png",
     ],
   },
 
@@ -167,7 +167,7 @@ export const defaultIndianFoodItems = [
     description:
       "Crispy golden fries tossed with spicy peri peri seasoning.",
     image: [
-      "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&auto=format&fit=crop",
+      "/food/peri_peri_fry.png",
     ],
   },
 
@@ -181,7 +181,7 @@ export const defaultIndianFoodItems = [
     description:
       "Crispy golden potato fries served with delicious seasoning.",
     image: [
-      "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&auto=format&fit=crop",
+      "/food/french_fry.png",
     ],
   },
 
@@ -195,7 +195,7 @@ export const defaultIndianFoodItems = [
     description:
       "Soft Indian wheat roti freshly prepared and served hot.",
     image: [
-      "https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?w=500&auto=format&fit=crop",
+      "/food/roti.png",
     ],
   },
 
@@ -209,7 +209,7 @@ export const defaultIndianFoodItems = [
     description:
       "Soft Indian wheat roti generously brushed with butter.",
     image: [
-      "https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?w=500&auto=format&fit=crop",
+      "/food/butter_roti.png",
     ],
   },
 
@@ -223,7 +223,7 @@ export const defaultIndianFoodItems = [
     description:
       "Yellow lentils tempered with aromatic spices and served hot.",
     image: [
-      "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=500&auto=format&fit=crop",
+      "/food/fry_daal.png",
     ],
   },
 
@@ -238,7 +238,7 @@ export const defaultIndianFoodItems = [
     description:
       "Chilled creamy coffee blended to perfection.",
     image: [
-      "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500&auto=format&fit=crop",
+      "/food/cold_coffe.png",
     ],
   },
 
@@ -253,7 +253,7 @@ export const defaultIndianFoodItems = [
     description:
       "Rich and creamy milkshake blended with delicious Oreo cookies.",
     image: [
-      "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&auto=format&fit=crop",
+      "/food/banana_shake.png",
     ],
   },
 
@@ -267,7 +267,7 @@ export const defaultIndianFoodItems = [
     description:
       "Creamy banana milkshake made with fresh bananas and chilled milk.",
     image: [
-      "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=500&auto=format&fit=crop",
+      "/food/banana_shake.png",
     ],
   },
 
@@ -282,7 +282,7 @@ export const defaultIndianFoodItems = [
     description:
       "Creamy chocolate milkshake blended with crunchy Kit-Kat pieces.",
     image: [
-      "https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=500&auto=format&fit=crop",
+      "/food/banana_shake.png",
     ],
   },
 
@@ -296,7 +296,7 @@ export const defaultIndianFoodItems = [
     description:
       "Two boiled eggs cooked in a rich and flavorful Indian onion-tomato gravy.",
     image: [
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&auto=format&fit=crop",
+      "/food/egg_curry.png",
     ],
   },
 
@@ -310,7 +310,7 @@ export const defaultIndianFoodItems = [
     description:
       "Baby potatoes slow-cooked in a rich and aromatic Indian gravy.",
     image: [
-      "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=500&auto=format&fit=crop",
+      "/food/dum_aloo.png",
     ],
   },
 
@@ -324,7 +324,7 @@ export const defaultIndianFoodItems = [
     description:
       "Steamed fluffy rice prepared fresh and served hot.",
     image: [
-      "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=500&auto=format&fit=crop",
+      "/food/rice.png",
     ],
   },
 
@@ -338,7 +338,7 @@ export const defaultIndianFoodItems = [
     description:
       "Fragrant basmati rice tempered with cumin seeds and aromatic spices.",
     image: [
-      "https://images.unsplash.com/photo-1596560548464-f010549b84d7?w=500&auto=format&fit=crop",
+      "/food/jira_rice.png",
     ],
   },
 
@@ -352,7 +352,7 @@ export const defaultIndianFoodItems = [
     description:
       "Flavorful rice stir-fried with vegetables, herbs, and Indian spices.",
     image: [
-      "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=500&auto=format&fit=crop",
+      "/food/fry_rice.png",
     ],
   },
 
@@ -366,7 +366,7 @@ export const defaultIndianFoodItems = [
     description:
       "Aromatic basmati rice cooked with fresh vegetables and fragrant spices.",
     image: [
-      "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&auto=format&fit=crop",
+      "/food/veg_pulav.png",
     ],
   },
 
@@ -380,7 +380,7 @@ export const defaultIndianFoodItems = [
     description:
       "Fragrant rice cooked with green peas and aromatic Indian spices.",
     image: [
-      "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&auto=format&fit=crop",
+      "/food/matar_pulav.png",
     ],
   },
 
@@ -394,7 +394,7 @@ export const defaultIndianFoodItems = [
     description:
       "Traditional Indian semolina dessert prepared with ghee, sugar, and aromatic cardamom.",
     image: [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop",
+      "/food/aloo_pakoda.png",
     ],
   },
 
@@ -408,7 +408,7 @@ export const defaultIndianFoodItems = [
     description:
       "Stir-fried rice cooked with egg, vegetables, and flavorful spices.",
     image: [
-      "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=500&auto=format&fit=crop",
+      "/food/egg_fry_rice.png",
     ],
   },
 
@@ -422,7 +422,7 @@ export const defaultIndianFoodItems = [
     description:
       "Fresh and crispy sandwich prepared with flavorful vegetable filling.",
     image: [
-      "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&auto=format&fit=crop",
+      "/food/aloo_sandwitch.png",
     ],
   },
 
@@ -436,7 +436,7 @@ export const defaultIndianFoodItems = [
     description:
       "Scrambled eggs cooked with onions, tomatoes, green chilies, and Indian spices.",
     image: [
-      "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=500&auto=format&fit=crop",
+      "/food/egg_bhurji.png",
     ],
   },
 
@@ -450,7 +450,7 @@ export const defaultIndianFoodItems = [
     description:
       "Crispy potato fritters coated in seasoned gram-flour batter.",
     image: [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop",
+      "/food/aloo_pakoda.png",
     ],
   },
 
@@ -464,7 +464,7 @@ export const defaultIndianFoodItems = [
     description:
       "Flavorful bhindi sabzi served with four freshly prepared rotis.",
     image: [
-      "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=500&auto=format&fit=crop",
+      "/food/bhindi_roti.png",
     ],
   },
 
@@ -478,7 +478,7 @@ export const defaultIndianFoodItems = [
     description:
       "Crispy golden sabudana vadas prepared with tapioca pearls, potato, and peanuts.",
     image: [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop",
+      "/food/sabudana_pakoda.png",
     ],
   },
 
@@ -493,7 +493,7 @@ export const defaultIndianFoodItems = [
     description:
       "Crispy golden samosa filled with spiced potatoes and peas, served with chutney.",
     image: [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop",
+      "/food/samosa.png",
     ],
   },
 
@@ -508,7 +508,7 @@ export const defaultIndianFoodItems = [
     description:
       "Soft and delicious milk-solid dumplings soaked in fragrant sugar syrup.",
     image: [
-      "https://images.unsplash.com/photo-1666190094763-5f7b5d5e4c7e?w=500&auto=format&fit=crop",
+      "/food/gulabzamun.png",
     ],
   },
 
@@ -522,7 +522,7 @@ export const defaultIndianFoodItems = [
     description:
       "Soft and spongy cottage-cheese dumplings soaked in light sugar syrup.",
     image: [
-      "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=500&auto=format&fit=crop",
+      "/food/rasagulla.png",
     ],
   },
 ];
