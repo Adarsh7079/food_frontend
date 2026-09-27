@@ -260,7 +260,7 @@ const ShopContextProvider = (props) => {
     const subtotal = getCartAmount();
     const qualifiesForOffer = subtotal >= 499;
     const discount = qualifiesForOffer
-      ? Math.round(subtotal * 0.2)
+      ? Math.round(subtotal * 0.25)
       : 0;
     const shippingFee = subtotal === 0
       ? 0
@@ -271,7 +271,7 @@ const ShopContextProvider = (props) => {
     return {
       subtotal,
       discount,
-      discountPercent: qualifiesForOffer ? 20 : 0,
+      discountPercent: qualifiesForOffer ? 25 : 0,
       shippingFee,
       total: subtotal - discount + shippingFee,
     };

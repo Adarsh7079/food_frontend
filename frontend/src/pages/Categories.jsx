@@ -23,9 +23,9 @@ const circularOffers = featuredFoodItems.map((item) => ({
 const bannerOffers = [
   {
     id: 1,
-    title: "First Order: 20% OFF",
+    title: "First Order: 25% OFF",
     subtitle: "On orders above ₹499",
-    code: "WELCOME20",
+    code: "WELCOME25",
     foodItemId: "1",
   },
 

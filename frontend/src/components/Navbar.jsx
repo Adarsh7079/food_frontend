@@ -59,7 +59,7 @@ const Navbar = () => {
 
       <header className="sticky top-0 z-[1000] w-full border-b border-[#d9c9ab] bg-[#f4ebdc]/90 shadow-[0_8px_30px_-18px_rgba(18,61,48,0.35)] backdrop-blur-xl">
 
-        <div className="flex items-center justify-between py-3 px-3 sm:px-8 font-medium">
+        <div className="flex items-center justify-between py-3 px-2 sm:px-8 font-medium">
 
           {/* =================================================
               LOGO
@@ -84,7 +84,7 @@ const Navbar = () => {
               DESKTOP MENU
           ================================================== */}
 
-          <div className="hidden xl:flex items-center gap-2 rounded-full border border-[#2f5d51] bg-[#123d30]/80 p-1.5 text-sm text-[#f3d7a1] shadow-inner">
+          <div className="hidden sm:flex items-center gap-2 rounded-full border border-[#2f5d51] bg-[#123d30]/80 p-1.5 text-sm text-[#f3d7a1] shadow-inner">
 
             <NavLink
               to="/"
@@ -252,7 +252,7 @@ const Navbar = () => {
               onClick={() =>
                 setVisible(true)
               }
-              className="h-10 w-10 cursor-pointer rounded-full border border-[#d9c9ab] bg-[#f7f1e7] p-2.5 transition hover:bg-[#f0e0c7] xl:hidden"
+              className="h-10 w-10 cursor-pointer rounded-full border border-[#d9c9ab] bg-[#f7f1e7] p-2.5 transition hover:bg-[#f0e0c7] sm:hidden"
               src={assets.menu_icon}
               alt="Menu"
             />
@@ -272,7 +272,7 @@ const Navbar = () => {
           type="button"
           aria-label="Close menu"
           onClick={() => setVisible(false)}
-          className="fixed inset-0 z-[1900] bg-[#0d2d22]/35 backdrop-blur-sm xl:hidden"
+          className="fixed inset-0 z-[1900] bg-[#0d2d22]/35 backdrop-blur-sm sm:hidden"
         />
       )}
 

@@ -3,7 +3,7 @@ import React from "react";
 const TiffinService = () => {
   return (
     <section className="my-16 px-4 max-w-6xl mx-auto">
-      <div className="relative overflow-hidden rounded-3xl border border-[#d9a74a]/30 bg-gradient-to-r from-[#123d30] via-[#0d2d22] to-[#1d4d3e] p-8 text-[#f8eed8] shadow-xl sm:p-12">
+      <div className="relative overflow-hidden rounded-3xl border border-[#d9a74a]/30 bg-linear-to-r from-[#123d30] via-[#0d2d22] to-[#1d4d3e] p-8 text-[#f8eed8] shadow-xl sm:p-12">
         <div className="relative z-10 max-w-lg">
           <span className="text-xs font-bold uppercase tracking-widest text-[#f3d7a1] bg-[#f3d7a1]/10 border border-[#f3d7a1]/30 px-3.5 py-1 rounded-full">
             Daily Tiffin Plans
@@ -15,11 +15,11 @@ const TiffinService = () => {
             Subscribe to our weekly or monthly meal plans. Fresh, hygienic, and home-style cooked North & South Indian meals delivered right to your office or home.
           </p>
           <div className="mt-6 flex flex-wrap gap-4 items-center">
-            <button className="bg-gradient-to-r from-[#d9a74a] to-[#f3d7a1] hover:from-[#c78c28] hover:to-[#ebc97c] text-[#123d30] font-bold text-sm px-6 py-3 rounded-xl shadow-md transition-all active:scale-95">
+            <button className="bg-linear-to-r from-[#d9a74a] to-[#f3d7a1] hover:from-[#c78c28] hover:to-[#ebc97c] text-[#123d30] font-bold text-sm px-6 py-3 rounded-xl shadow-md transition-all active:scale-95">
               Explore Meal Plans
             </button>
-            <span className="text-xs text-[#f3d7a1] font-medium">
-              Starts at just ₹99/meal
+            <span className="text-xs font-semibold text-[#f3d7a1]">
+              ₹2600 · 30 tiffins · approx. ₹87 per meal
             </span>
           </div>
         </div>

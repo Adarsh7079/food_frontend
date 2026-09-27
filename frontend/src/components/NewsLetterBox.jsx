@@ -7,7 +7,7 @@ const NewsLetterBox = () => {
   return (
     <div className="my-16 rounded-[2rem] bg-gradient-to-r from-[#123d30] via-[#1d4d3e] to-[#d9a74a] p-8 text-center text-[#f8eed8] shadow-xl sm:p-12">
       <p className="text-2xl font-semibold">
-        Get 50% off your first order
+        Get 25% off your first order
       </p>
       <p className="mt-3 text-sm text-[#f5e7c8] sm:text-base">
         Join our newsletter for offers, new dishes, and exclusive deals.

@@ -119,7 +119,7 @@ const Hero = () => {
               Opening Offer
             </span>
             <p className="mt-2 text-lg font-bold text-stone-900">
-              50% OFF on your first order
+              25% OFF on your first order
             </p>
             <p className="text-xs text-stone-600 mt-1 font-medium">
               Free delivery on orders above ₹499.

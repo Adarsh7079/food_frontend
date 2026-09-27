@@ -271,7 +271,7 @@ const PlaceOrder = () => {
                   <p className="mt-3 text-xs font-semibold text-[#2d6756]">
                     {pricing.discount > 0
                       ? `You save ₹${pricing.discount.toFixed(2)} with the ${pricing.discountPercent}% offer.`
-                      : "Get 20% off when your items total ₹499 or more."}
+                      : "Get 25% off when your items total ₹499 or more."}
                   </p>
                 </div>
                 <div className="h-5 w-5 rounded-full border border-green-500 bg-green-500"></div>
