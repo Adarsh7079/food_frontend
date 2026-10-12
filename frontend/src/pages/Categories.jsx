@@ -37,13 +37,13 @@ const bannerOffers = [
     foodItemId: "3",
   },
 
-  {
-    id: 3,
-    title: "Biryani Feast Deal",
-    subtitle: "Free Raita + Cold Drink",
-    code: "FEASTDEAL",
-    foodItemId: "2",
-  },
+  // {
+  //   id: 3,
+  //   title: "Biryani Feast Deal",
+  //   subtitle: "Free Raita + Cold Drink",
+  //   code: "FEASTDEAL",
+  //   foodItemId: "2",
+  // },
 ];
 
 const regularItems = popularFoodItems.map((item) => ({
@@ -194,7 +194,7 @@ const SpecialOffers = () => {
     );
 
   return (
-    <section className="relative isolate -mx-4 w-[calc(100%+2rem)] overflow-hidden bg-[linear-gradient(145deg,#fffaf2_0%,#f6eedb_58%,#f2e7cf_100%)] px-4 py-8 sm:-mx-[5vw] sm:w-[calc(100%+10vw)] sm:px-[5vw] md:-mx-[7vw] md:w-[calc(100%+14vw)] md:px-[7vw] lg:-mx-[9vw] lg:w-[calc(100%+18vw)] lg:px-[9vw] sm:py-12 pb-32">
+    <section className="relative isolate -mx-4 w-[calc(100%+2rem)] overflow-hidden  px-4 py-8 sm:-mx-[5vw] sm:w-[calc(100%+10vw)] sm:px-[5vw] md:-mx-[7vw] md:w-[calc(100%+14vw)] md:px-[7vw] lg:-mx-[9vw] lg:w-[calc(100%+18vw)] lg:px-[9vw] sm:py-12 pb-32">
 
       <div className="relative mx-auto max-w-6xl space-y-12">
 
