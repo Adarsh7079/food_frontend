@@ -189,7 +189,7 @@ export const defaultIndianFoodItems = [
     _id: "1415",
     name: "Roti",
     price: 13,
-    category: "Breads",
+    category: "Roti",
     subCategory: "Veg",
     rating: 4.3,
     description:
@@ -227,64 +227,64 @@ export const defaultIndianFoodItems = [
     ],
   },
 
-  {
-    _id: "1418",
-    name: "Cold Coffee",
-    price: 129,
-    category: "Drinks",
-    subCategory: "Veg",
-    rating: 4.6,
-    featuredTag: "Popular",
-    description:
-      "Chilled creamy coffee blended to perfection.",
-    image: [
-      "/food/cold_coffe.png",
-    ],
-  },
+  // {
+  //   _id: "1418",
+  //   name: "Cold Coffee",
+  //   price: 129,
+  //   category: "Drinks",
+  //   subCategory: "Veg",
+  //   rating: 4.6,
+  //   featuredTag: "Popular",
+  //   description:
+  //     "Chilled creamy coffee blended to perfection.",
+  //   image: [
+  //     "/food/cold_coffe.png",
+  //   ],
+  // },
 
-  {
-    _id: "1419",
-    name: "Oreo Shake",
-    price: 199,
-    category: "Drinks",
-    subCategory: "Veg",
-    rating: 4.8,
-    featuredTag: "Bestseller",
-    description:
-      "Rich and creamy milkshake blended with delicious Oreo cookies.",
-    image: [
-      "/food/banana_shake.png",
-    ],
-  },
+  // {
+  //   _id: "1419",
+  //   name: "Oreo Shake",
+  //   price: 199,
+  //   category: "Drinks",
+  //   subCategory: "Veg",
+  //   rating: 4.8,
+  //   featuredTag: "Bestseller",
+  //   description:
+  //     "Rich and creamy milkshake blended with delicious Oreo cookies.",
+  //   image: [
+  //     "/food/banana_shake.png",
+  //   ],
+  // },
 
-  {
-    _id: "1420",
-    name: "Banana Shake",
-    price: 129,
-    category: "Drinks",
-    subCategory: "Veg",
-    rating: 4.5,
-    description:
-      "Creamy banana milkshake made with fresh bananas and chilled milk.",
-    image: [
-      "/food/banana_shake.png",
-    ],
-  },
+  // {
+  //   _id: "1420",
+  //   name: "Banana Shake",
+  //   price: 129,
+  //   category: "Drinks",
+  //   subCategory: "Veg",
+  //   rating: 4.5,
+  //   description:
+  //     "Creamy banana milkshake made with fresh bananas and chilled milk.",
+  //   image: [
+  //     "/food/banana_shake.png",
+  //   ],
+  // },
 
-  {
-    _id: "1421",
-    name: "Kit-Kat Shake",
-    price: 199,
-    category: "Drinks",
-    subCategory: "Veg",
-    rating: 4.8,
-    featuredTag: "Bestseller",
-    description:
-      "Creamy chocolate milkshake blended with crunchy Kit-Kat pieces.",
-    image: [
-      "/food/banana_shake.png",
-    ],
-  },
+  // {
+  //   _id: "1421",
+  //   name: "Kit-Kat Shake",
+  //   price: 199,
+  //   category: "Drinks",
+  //   subCategory: "Veg",
+  //   rating: 4.8,
+  //   featuredTag: "Bestseller",
+  //   description:
+  //     "Creamy chocolate milkshake blended with crunchy Kit-Kat pieces.",
+  //   image: [
+  //     "/food/banana_shake.png",
+  //   ],
+  // },
 
   {
     _id: "1423",
@@ -384,19 +384,19 @@ export const defaultIndianFoodItems = [
     ],
   },
 
-  {
-    _id: "1432",
-    name: "Sooji Halwa",
-    price: 159,
-    category: "Sweets",
-    subCategory: "Veg",
-    rating: 4.6,
-    description:
-      "Traditional Indian semolina dessert prepared with ghee, sugar, and aromatic cardamom.",
-    image: [
-      "/food/aloo_pakoda.png",
-    ],
-  },
+  // {
+  //   _id: "1432",
+  //   name: "Sooji Halwa",
+  //   price: 159,
+  //   category: "Sweets",
+  //   subCategory: "Veg",
+  //   rating: 4.6,
+  //   description:
+  //     "Traditional Indian semolina dessert prepared with ghee, sugar, and aromatic cardamom.",
+  //   image: [
+  //     "/food/aloo_pakoda.png",
+  //   ],
+  // },
 
   {
     _id: "1436",
@@ -448,7 +448,7 @@ export const defaultIndianFoodItems = [
     subCategory: "Veg",
     rating: 4.4,
     description:
-      "Crispy potato fritters coated in seasoned gram-flour batter.",
+      "Crispy potato fritters coated in seasoned gram-flour batter. [ RS. 20 /pcs min order : 5]",
     image: [
       "/food/aloo_pakoda.png",
     ],
@@ -456,15 +456,15 @@ export const defaultIndianFoodItems = [
 
   {
     _id: "1442",
-    name: "Bhindi & Roti",
-    price: 249,
+    name: "Sabji & Roti",
+    price: 139,
     category: "Meals",
     subCategory: "Veg",
     rating: 4.6,
     description:
-      "Flavorful bhindi sabzi served with four freshly prepared rotis.",
+      "Flavorful sabji served with four freshly prepared rotis.",
     image: [
-      "/food/bhindi_roti.png",
+      "/food/sabji_roti.png",
     ],
   },
 
@@ -482,49 +482,49 @@ export const defaultIndianFoodItems = [
     ],
   },
 
-  {
-    _id: "1444",
-    name: "Samosa",
-    price: 30,
-    category: "Snacks",
-    subCategory: "Veg",
-    rating: 4.6,
-    featuredTag: "Popular",
-    description:
-      "Crispy golden samosa filled with spiced potatoes and peas, served with chutney.",
-    image: [
-      "/food/samosa.png",
-    ],
-  },
+  // {
+  //   _id: "1444",
+  //   name: "Samosa",
+  //   price: 30,
+  //   category: "Snacks",
+  //   subCategory: "Veg",
+  //   rating: 4.6,
+  //   featuredTag: "Popular",
+  //   description:
+  //     "Crispy golden samosa filled with spiced potatoes and peas, served with chutney.",
+  //   image: [
+  //     "/food/samosa.png",
+  //   ],
+  // },
 
-  {
-    _id: "1445",
-    name: "Gulab Jamun",
-    price: 90,
-    category: "Sweets",
-    subCategory: "Veg",
-    rating: 4.8,
-    featuredTag: "Bestseller",
-    description:
-      "Soft and delicious milk-solid dumplings soaked in fragrant sugar syrup.",
-    image: [
-      "/food/gulabzamun.png",
-    ],
-  },
+  // {
+  //   _id: "1445",
+  //   name: "Gulab Jamun",
+  //   price: 90,
+  //   category: "Sweets",
+  //   subCategory: "Veg",
+  //   rating: 4.8,
+  //   featuredTag: "Bestseller",
+  //   description:
+  //     "Soft and delicious milk-solid dumplings soaked in fragrant sugar syrup.",
+  //   image: [
+  //     "/food/gulabzamun.png",
+  //   ],
+  // },
 
-  {
-    _id: "1446",
-    name: "Rasgulla",
-    price: 90,
-    category: "Sweets",
-    subCategory: "Veg",
-    rating: 4.7,
-    description:
-      "Soft and spongy cottage-cheese dumplings soaked in light sugar syrup.",
-    image: [
-      "/food/rasagulla.png",
-    ],
-  },
+  // {
+  //   _id: "1446",
+  //   name: "Rasgulla",
+  //   price: 90,
+  //   category: "Sweets",
+  //   subCategory: "Veg",
+  //   rating: 4.7,
+  //   description:
+  //     "Soft and spongy cottage-cheese dumplings soaked in light sugar syrup.",
+  //   image: [
+  //     "/food/rasagulla.png",
+  //   ],
+  // },
 ];
 
 export const foodItemsByCategory = defaultIndianFoodItems.reduce(

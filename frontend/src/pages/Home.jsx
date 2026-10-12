@@ -33,7 +33,7 @@ const Home = () => {
         </span>
       </div>
 
-      <div className="relative z-10 mt-3 overflow-hidden border-y border-[#123d30]/10 bg-[#123d30] text-[#f8eed8] shadow-inner">
+      {/* <div className="relative z-10 mt-3 overflow-hidden border-y border-[#123d30]/10 bg-[#123d30] text-[#f8eed8] shadow-inner">
         <div className="flex min-w-max animate-[scroll_18s_linear_infinite] items-center gap-8 whitespace-nowrap px-4 py-2.5 text-xs font-bold uppercase tracking-[0.22em] sm:text-sm">
           <span>Flat 25% Off Orders Above ₹499</span>
           <span className="text-[#f3d7a1]">•</span>
@@ -51,7 +51,7 @@ const Home = () => {
           <span className="text-[#f3d7a1]">•</span>
           <span>Lunch Special ₹199</span>
         </div>
-      </div>
+      </div> */}
 
       {/* Hero Header */}
       <header className="relative pt-6 pb-8">
