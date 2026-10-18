@@ -68,7 +68,7 @@ const About = () => {
       </div>
 
       {/* Founders & Chefs Section */}
-      <div className="my-16">
+      {/* <div className="my-16">
         <div className="mb-10 text-center">
           <Title text1={"MEET OUR"} text2={"FOUNDERS & CHEFS"} />
           <p className="mt-2 text-sm text-[#52665d]">
@@ -98,7 +98,7 @@ const About = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* Why Choose Us Section */}
       <div className="my-16">
